@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AdminLogin.aspx.cs" Inherits="ABedirUniversity.WebForms.AdminLogin" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AdminLogin.aspx.cs" Inherits="ABedirUniversity.WebForms.Admin.AdminLogin" %>
 
 <!DOCTYPE html>
 
@@ -31,8 +31,9 @@
                 </ul>
             </div>
         </nav>
-
-        <h1 class="text-center mb-5">Login to student portal</h1>
+        <div class="p-4">
+            <h1 class="text-center">Login to student portal</h1>
+        </div>
 
         <div class="center">
             <div class="form-group">
@@ -41,7 +42,7 @@
             <div class="form-group">
                 <input runat="server" type="password" class="form-control" id="passwordInput" placeholder="Password" />
             </div>
-            <div>Not Enrolled? Apply <a href="StudentApplicationForm.aspx">Here</a></div>
+            <div>Contact support to get an Admin account.</div>
             <asp:Button runat="server" ID="LoginSubmitBtn" OnClick="LoginSubmitBtn_Click" type="submit" class="btn btn-primary" Text ="Submit"/>
         </div>
     </form>

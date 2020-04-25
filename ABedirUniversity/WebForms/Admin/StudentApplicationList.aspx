@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="StudentApplicationList.aspx.cs" Inherits="ABedirUniversity.WebForms.StudentApplicationList" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="StudentApplicationList.aspx.cs" Inherits="ABedirUniversity.WebForms.Admin.StudentApplicationList" %>
 
 <!DOCTYPE html>
 
@@ -162,10 +162,10 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="AdminLogin.aspx">Admin Portal</a>
+                        <a class="nav-link" href="AdminLogin.aspx">Active Students</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="StudentLogin.aspx">Student Portal</a>
+                        <a class="nav-link" href="StudentLogin.aspx">Student Applications</a>
                     </li>
                 </ul>
             </div>

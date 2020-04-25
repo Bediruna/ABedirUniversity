@@ -71,7 +71,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ErrorPage.htm" />
-    <Content Include="WebForms\StudentApplicationList.aspx" />
+    <Content Include="WebForms\Admin\ActiveStudentsList.aspx" />
+    <Content Include="WebForms\Admin\Home.aspx" />
+    <Content Include="WebForms\Admin\StudentApplicationList.aspx" />
     <Content Include="CSS\bootstrap.min.css" />
     <Content Include="CSS\MainStyle.css" />
     <Content Include="CSS\ApplicationGridStyle.css" />
@@ -84,24 +86,38 @@
     <Content Include="JavaScript\jquery-3.4.1.min.js" />
     <Content Include="JavaScript\jquery.mask.js" />
     <Content Include="WebForms\StudentApplicationForm.aspx" />
-    <Content Include="WebForms\StudentApplicationDetailView.aspx" />
+    <Content Include="WebForms\Admin\StudentApplicationDetailView.aspx" />
     <Content Include="WebForms\AdminLogin.aspx" />
+    <Content Include="WebForms\Student\ClassList.aspx" />
+    <Content Include="WebForms\Student\Home.aspx" />
     <Content Include="WebForms\StudentLogin.aspx" />
     <Content Include="Web.config" />
+    <Content Include="WebForms\Student\TermList.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CSharp\Models\ApplicationModel.cs" />
-    <Compile Include="CSharp\Models\PersonalInformation.cs" />
     <Compile Include="CSharp\CustomUtilities.cs" />
-    <Compile Include="CSharp\Models\SecurityInformation.cs" />
     <Compile Include="CSharp\PasswordManager.cs" />
     <Compile Include="CSharp\Logger.cs" />
-    <Compile Include="CSharp\Models\StudentApplicationDetails.cs" />
-    <Compile Include="WebForms\StudentApplicationList.aspx.cs">
+    <Compile Include="CSharp\Models\StudentApplication.cs" />
+    <Compile Include="WebForms\Admin\ActiveStudentsList.aspx.cs">
+      <DependentUpon>ActiveStudentsList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\Admin\ActiveStudentsList.aspx.designer.cs">
+      <DependentUpon>ActiveStudentsList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\Admin\Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\Admin\Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\Admin\StudentApplicationList.aspx.cs">
       <DependentUpon>StudentApplicationList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="WebForms\StudentApplicationList.aspx.designer.cs">
+    <Compile Include="WebForms\Admin\StudentApplicationList.aspx.designer.cs">
       <DependentUpon>StudentApplicationList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -114,11 +130,11 @@
       <DependentUpon>StudentApplicationForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="CSharp\Models\BasicInformation.cs" />
-    <Compile Include="WebForms\StudentApplicationDetailView.aspx.cs">
+    <Compile Include="WebForms\Admin\StudentApplicationDetailView.aspx.cs">
       <DependentUpon>StudentApplicationDetailView.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="WebForms\StudentApplicationDetailView.aspx.designer.cs">
+    <Compile Include="WebForms\Admin\StudentApplicationDetailView.aspx.designer.cs">
       <DependentUpon>StudentApplicationDetailView.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebForms\AdminLogin.aspx.cs">
@@ -128,12 +144,33 @@
     <Compile Include="WebForms\AdminLogin.aspx.designer.cs">
       <DependentUpon>AdminLogin.aspx</DependentUpon>
     </Compile>
+    <Compile Include="WebForms\Student\ClassList.aspx.cs">
+      <DependentUpon>ClassList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\Student\ClassList.aspx.designer.cs">
+      <DependentUpon>ClassList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\Student\Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\Student\Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
     <Compile Include="WebForms\StudentLogin.aspx.cs">
       <DependentUpon>StudentLogin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="WebForms\StudentLogin.aspx.designer.cs">
       <DependentUpon>StudentLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\Student\TermList.aspx.cs">
+      <DependentUpon>TermList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\Student\TermList.aspx.designer.cs">
+      <DependentUpon>TermList.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ABedirUniversity.WebForms
+namespace ABedirUniversity.WebForms.Student
 {
 
 
-    public partial class StudentApplicationList
+    public partial class Home
     {
 
         /// <summary>
@@ -22,14 +22,5 @@ namespace ABedirUniversity.WebForms
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-
-        /// <summary>
-        /// ApplicationsGridView control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView ApplicationsGridView;
     }
 }

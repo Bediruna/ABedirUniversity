@@ -1,12 +1,8 @@
 ﻿using ABedirUniversity.CSharp;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace ABedirUniversity.WebForms
+namespace ABedirUniversity.WebForms.Admin
 {
     public partial class StudentApplicationDetailView : System.Web.UI.Page
     {
@@ -61,7 +57,7 @@ namespace ABedirUniversity.WebForms
 
         protected void ApplicationGridView_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            int cellsToHide = 2;
+            int cellsToHide = 3;
             for (int i = e.Row.Cells.Count - 1; i > e.Row.Cells.Count - 1 - cellsToHide; i--)
             {
                 e.Row.Cells[i].Visible = false;

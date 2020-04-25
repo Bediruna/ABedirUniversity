@@ -7,16 +7,16 @@ namespace ABedirUniversity.CSharp
 {
     public static class PasswordManager
     {
-        public static bool ValidatePassword(string username, string inputPassword)
+        public static bool ValidatePassword(string username, string inputPassword, string applicantType)
         {
-            string accountSalt = SQLDataAccess.GetAccountSalt(username);
+            string accountSalt = SQLDataAccess.GetAccountSalt(username, applicantType);
             if (string.IsNullOrEmpty(accountSalt))
             {
                 return false;
             }
             else
             {
-                string hashedUserPassword = SQLDataAccess.GetHashedPassword(username);
+                string hashedUserPassword = SQLDataAccess.GetHashedPassword(username, applicantType);
                 if (string.IsNullOrEmpty(hashedUserPassword))
                 {
                     return false;

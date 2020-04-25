@@ -12,152 +12,114 @@ namespace ABedirUniversity.CSharp
         readonly static string dbConnectionString = "Persist Security Info=False;server=db825511962.hosting-data.io,1433;Initial Catalog=db825511962;User ID=dbo825511962;Password=ABedirDB2020.";
         public static List<BasicInformation> GetApplications()
         {
-            string command = "SELECT Id, FirstName, LastName, CreateDate, UpdateDate, Status FROM StudentApplications";
-            using (IDbConnection cnn = new SqlConnection(dbConnectionString))
+            try
             {
-                var output = cnn.Query<BasicInformation>(command, new DynamicParameters());
-                return output.ToList();
+                string command = "SELECT Id, FirstName, LastName, CreateDate, UpdateDate, Status FROM StudentApplications";
+                using (IDbConnection cnn = new SqlConnection(dbConnectionString))
+                {
+                    var output = cnn.Query<BasicInformation>(command, new DynamicParameters());
+                    return output.ToList();
+                }
             }
-            //try
-            //{
-            //    string command = "SELECT Id, FirstName, LastName, CreateDate, UpdateDate, Status FROM StudentApplications";
-            //    using (IDbConnection cnn = new SqlConnection(dbConnectionString))
-            //    {
-            //        var output = cnn.Query<BasicInformation>(command, new DynamicParameters());
-            //        return output.ToList();
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    Logger.LogError(ex.ToString(), "GetApplications");
-            //    return GetSampleApplications();
-            //}
+            catch (Exception ex)
+            {
+                Logger.LogError(ex.ToString(), "GetApplications");
+                return GetSampleApplications();
+            }
         }
-        public static List<StudentApplicationDetails> GetApplicationDetails(int applicationId)
+        public static List<StudentApplication> GetApplicationDetails(int applicationId)
         {
-            string command = "SELECT Id, Status, FirstName, LastName, UserName, Email, PhoneNumber, Address1, Address2, City, State, ZipCode, CreateDate, UpdateDate" +
-                " FROM StudentApplications WHERE Id = " + applicationId;
-            using (IDbConnection cnn = new SqlConnection(dbConnectionString))
+            try
             {
-                var output = cnn.Query<StudentApplicationDetails>(command, new DynamicParameters());
-                return output.ToList();
+                string command = "SELECT Id, Status, FirstName, LastName, UserName, Email, PhoneNumber, Address1, Address2, City, State, ZipCode, CreateDate, UpdateDate" +
+                    " FROM StudentApplications WHERE Id = " + applicationId;
+                using (IDbConnection cnn = new SqlConnection(dbConnectionString))
+                {
+                    var output = cnn.Query<StudentApplication>(command, new DynamicParameters());
+                    return output.ToList();
+                }
             }
-            //try
-            //{
-            //    string command = "SELECT Id, Status, FirstName, LastName, UserName, Email, PhoneNumber, Address1, Address2, City, State, ZipCode, CreateDate, UpdateDate" +
-            //        " FROM StudentApplications WHERE Id = " + applicationId;
-            //    using (IDbConnection cnn = new SqlConnection(dbConnectionString))
-            //    {
-            //        var output = cnn.Query<StudentApplicationDetails>(command, new DynamicParameters());
-            //        return output.ToList();
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    Logger.LogError(ex.ToString(), "GetApplicationDetails");
-            //    return GetSampleApplication();
-            //}
+            catch (Exception ex)
+            {
+                Logger.LogError(ex.ToString(), "GetApplicationDetails");
+                return GetSampleApplication();
+            }
         }
-        public static string GetAccountSalt(string userName)
+        public static string GetAccountSalt(string userName, string applicantType)
         {
-            string command = "SELECT PasswordSalt FROM StudentApplications WHERE UserName = " + userName;
-            using (IDbConnection cnn = new SqlConnection(dbConnectionString))
+            try
             {
-                var output = cnn.ExecuteScalar(command, new DynamicParameters());
-                return output.ToString();
+                string command = "SELECT PasswordSalt FROM StudentApplications WHERE UserName = '" + userName + "' and ApplicantType = '" + applicantType + "'";
+                using (IDbConnection cnn = new SqlConnection(dbConnectionString))
+                {
+                    var output = cnn.ExecuteScalar(command, new DynamicParameters());
+                    return output.ToString();
+                }
             }
-            //try
-            //{
-            //    string command = "SELECT PasswordSalt FROM StudentApplications WHERE UserName = " + userName;
-            //    using (IDbConnection cnn = new SqlConnection(dbConnectionString))
-            //    {
-            //        var output = cnn.ExecuteScalar(command, new DynamicParameters());
-            //        return output.ToString();
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    Logger.LogError(ex.ToString(), "GetAccountSalt");
-            //    //return null;
-            //    return "";
-            //}
+            catch (Exception ex)
+            {
+                Logger.LogError(ex.ToString(), "GetAccountSalt");
+                return "";
+            }
         }
-        public static string GetHashedPassword(string userName)
+        public static string GetHashedPassword(string userName, string applicantType)
         {
-            string command = "SELECT HashedPassword FROM StudentApplications WHERE UserName = " + userName;
-            using (IDbConnection cnn = new SqlConnection(dbConnectionString))
+            try
             {
-                var output = cnn.ExecuteScalar(command, new DynamicParameters());
-                return output.ToString();
+                string command = "SELECT HashedPassword FROM StudentApplications WHERE UserName = '" + userName + "' and ApplicantType = '" + applicantType + "'";
+                using (IDbConnection cnn = new SqlConnection(dbConnectionString))
+                {
+                    var output = cnn.ExecuteScalar(command, new DynamicParameters());
+                    return output.ToString();
+                }
             }
-            //try
-            //{
-            //    string command = "SELECT HashedPassword FROM StudentApplications WHERE UserName = " + userName;
-            //    using (IDbConnection cnn = new SqlConnection(dbConnectionString))
-            //    {
-            //        var output = cnn.ExecuteScalar(command, new DynamicParameters());
-            //        return output.ToString();
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    Logger.LogError(ex.ToString(), "GetHashedPassword");
-            //    //return null;
-            //    return "";
-            //}
+            catch (Exception ex)
+            {
+                Logger.LogError(ex.ToString(), "GetHashedPassword");
+                return "";
+            }
         }
-        public static bool SaveApplication(StudentApplicationDetails application)
+        public static bool SaveApplication(StudentApplication application)
         {
-            using (IDbConnection cnn = new SqlConnection(dbConnectionString))
+            try
             {
-                string sqlInsertCommand = "INSERT INTO StudentApplications(FirstName, LastName, UserName, HashedPassword, Email, PhoneNumber, Address1, Address2, City, State, ZipCode, Status, CreateDate, UpdateDate, PasswordSalt)" +
-                                          "VALUES(@FirstName, @LastName, @UserName, @HashedPassword, @Email, @PhoneNumber, @Address1, @Address2, @City, @State, @ZipCode, @Status, @CreateDate, @UpdateDate, @PasswordSalt)";
-                cnn.Execute(sqlInsertCommand, application);
+                using (IDbConnection cnn = new SqlConnection(dbConnectionString))
+                {
+                    string sqlInsertCommand = "INSERT INTO StudentApplications(FirstName, LastName, UserName, HashedPassword, Email, PhoneNumber, Address1, Address2, City, State, ZipCode, Status, CreateDate, UpdateDate, PasswordSalt, ApplicantType)" +
+                                              "VALUES(@FirstName, @LastName, @UserName, @HashedPassword, @Email, @PhoneNumber, @Address1, @Address2, @City, @State, @ZipCode, @Status, @CreateDate, @UpdateDate, @PasswordSalt, @ApplicantType)";
+                    cnn.Execute(sqlInsertCommand, application);
+                }
             }
-            //try
-            //{
-            //    using (IDbConnection cnn = new SqlConnection(dbConnectionString))
-            //    {
-            //        string sqlInsertCommand = "INSERT INTO StudentApplications(FirstName, LastName, UserName, HashedPassword, Email, PhoneNumber, Address1, Address2, City, State, ZipCode, Status, CreateDate, UpdateDate, PasswordSalt)" +
-            //                                  "VALUES(@FirstName, @LastName, @UserName, @HashedPassword, @Email, @PhoneNumber, @Address1, @Address2, @City, @State, @ZipCode, @Status, @CreateDate, @UpdateDate, @PasswordSalt)";
-            //        cnn.Execute(sqlInsertCommand, application);
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    Logger.LogError(ex.ToString(), "SaveApplication");
-            //    return false;
-            //}
+            catch (Exception ex)
+            {
+                Logger.LogError(ex.ToString(), "SaveApplication");
+                return false;
+            }
             return true;
         }
         public static bool UpdateApplicationStatus(string applicationId, string newStatus)
         {
-            using (IDbConnection connection = new SqlConnection(dbConnectionString))
+            try
             {
-                string sqlUpdateCommand = "UPDATE StudentApplications SET Status = " + newStatus + " WHERE Id = " + applicationId;
-                connection.Execute(sqlUpdateCommand);
+                using (IDbConnection connection = new SqlConnection(dbConnectionString))
+                {
+                    string sqlUpdateCommand = "UPDATE StudentApplications SET Status = '" + newStatus + "' WHERE Id = " + applicationId;
+                    connection.Execute(sqlUpdateCommand);
+                }
             }
-            //try
-            //{
-            //    using (IDbConnection connection = new SqlConnection(dbConnectionString))
-            //    {
-            //        string sqlUpdateCommand = "UPDATE StudentApplications SET Status = " + newStatus + " WHERE Id = " + applicationId;
-            //        connection.Execute(sqlUpdateCommand);
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    Logger.LogError(ex.ToString(), "UpdateApplicationStatus");
-            //    return false;
-            //}
+            catch (Exception ex)
+            {
+                Logger.LogError(ex.ToString(), "UpdateApplicationStatus");
+                return false;
+            }
             return true;
         }
         #region temp sample code
-        public static List<StudentApplicationDetails> GetSampleApplication()
+        public static List<StudentApplication> GetSampleApplication()
         {
-            return new List<StudentApplicationDetails>
+            return new List<StudentApplication>
             {
-                new StudentApplicationDetails()
+                new StudentApplication()
                 {
                     Id = 1,
                     FirstName = "Joe",

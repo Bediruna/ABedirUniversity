@@ -11,7 +11,7 @@ namespace ABedirUniversity.WebForms.Admin
 {
 
 
-    public partial class AdminLogin
+    public partial class StudentApplicationList
     {
 
         /// <summary>
@@ -24,30 +24,12 @@ namespace ABedirUniversity.WebForms.Admin
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// usernameInput control.
+        /// ApplicationsGridView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText usernameInput;
-
-        /// <summary>
-        /// passwordInput control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputPassword passwordInput;
-
-        /// <summary>
-        /// LoginSubmitBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button LoginSubmitBtn;
+        protected global::System.Web.UI.WebControls.GridView ApplicationsGridView;
     }
 }

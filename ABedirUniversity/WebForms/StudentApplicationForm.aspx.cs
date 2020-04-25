@@ -14,7 +14,7 @@ namespace ABedirUniversity.WebForms
         {
             //validate input first
             string salt = PasswordManager.GenerateSalt();
-            StudentApplicationDetails application = new StudentApplicationDetails
+            StudentApplication application = new StudentApplication
             {
                 Status = "Pending",
                 FirstName = inputFirstName.Value,
@@ -30,7 +30,8 @@ namespace ABedirUniversity.WebForms
                 Address2 = inputAddress2.Value,
                 City = inputCity.Value,
                 State = inputState.Value,
-                ZipCode = inputZip.Value
+                ZipCode = inputZip.Value,
+                ApplicantType = "student"
             };
 
             if (SQLDataAccess.SaveApplication(application))

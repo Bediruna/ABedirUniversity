@@ -2,7 +2,7 @@
 using System;
 using System.Web.UI.WebControls;
 
-namespace ABedirUniversity.WebForms
+namespace ABedirUniversity.WebForms.Admin
 {
     public partial class StudentApplicationList : System.Web.UI.Page
     {

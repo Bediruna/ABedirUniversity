@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="StudentLogin.aspx.cs" Inherits="ABedirUniversity.WebForms.StudentLogin" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="ABedirUniversity.WebForms.Student.Home" %>
 
 <!DOCTYPE html>
 
@@ -6,7 +6,7 @@
 <head runat="server">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="shortcut icon" href="/Images/capIcon.ico" />
-    <title>ABU | Login</title>
+    <title>ABU | Student Home</title>
     <link href="https://fonts.googleapis.com/css?family=Lexend+Deca|Lexend+Zetta&display=swap" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="/CSS/MainStyle.css" />
     <link rel="stylesheet" type="text/css" href="/CSS/bootstrap.min.css" />
@@ -23,28 +23,14 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="AdminLogin.aspx">Admin Portal</a>
+                        <a class="nav-link" href="ClassList.aspx">Classes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="StudentLogin.aspx">Student Portal</a>
+                        <a class="nav-link" href="TermList.aspx">Terms</a>
                     </li>
                 </ul>
             </div>
         </nav>
-        <div class="p-4">
-            <h1 class="text-center">Login to student portal</h1>
-        </div>
-
-        <div class="center">
-            <div class="form-group">
-                <input runat="server" type="text" class="form-control" id="usernameInput" aria-describedby="emailHelp" placeholder="Username" />
-            </div>
-            <div class="form-group">
-                <input runat="server" type="password" class="form-control" id="passwordInput" placeholder="Password" />
-            </div>
-            <div>Not Enrolled? Apply <a href="StudentApplicationForm.aspx">Here</a></div>
-            <asp:Button runat="server" ID="LoginSubmitBtn" OnClick="LoginSubmitBtn_Click" type="submit" class="btn btn-primary" Text="Submit" />
-        </div>
     </form>
 </body>
 </html>

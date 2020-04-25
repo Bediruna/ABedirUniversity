@@ -1,7 +1,7 @@
 ﻿using ABedirUniversity.CSharp;
 using System;
 
-namespace ABedirUniversity.WebForms
+namespace ABedirUniversity.WebForms.Admin
 {
     public partial class AdminLogin : System.Web.UI.Page
     {
@@ -12,11 +12,11 @@ namespace ABedirUniversity.WebForms
 
         protected void LoginSubmitBtn_Click(object sender, EventArgs e)
         {
-            bool validation = PasswordManager.ValidatePassword(usernameInput.Value, passwordInput.Value);
+            bool validation = PasswordManager.ValidatePassword(usernameInput.Value, passwordInput.Value, "admin");
             if (validation)
             {
                 Session["user"] = usernameInput.Value;
-                Response.Redirect("StudentApplicationList.aspx");
+                Response.Redirect("Admin/Home.aspx");
             }
         }
     }

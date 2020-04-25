@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ABedirUniversity.WebForms
+namespace ABedirUniversity.WebForms.Admin
 {
 
 
