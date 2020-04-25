@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ABedirUniversity
+namespace ABedirUniversity.WebForms
 {
 
 
-    public partial class ApplicationsView
+    public partial class AdminLogin
     {
 
         /// <summary>
@@ -24,12 +24,30 @@ namespace ABedirUniversity
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// ApplicationsGridView control.
+        /// usernameInput control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView ApplicationsGridView;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText usernameInput;
+
+        /// <summary>
+        /// passwordInput control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputPassword passwordInput;
+
+        /// <summary>
+        /// LoginSubmitBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button LoginSubmitBtn;
     }
 }

@@ -47,9 +47,6 @@
       <HintPath>..\packages\Dapper.2.0.30\lib\net461\Dapper.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data.SQLite, Version=1.0.112.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Data.SQLite.Core.1.0.112.0\lib\net46\System.Data.SQLite.dll</HintPath>
-    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -73,58 +70,75 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ApplicationsView.aspx" />
+    <Content Include="ErrorPage.htm" />
+    <Content Include="WebForms\StudentApplicationList.aspx" />
     <Content Include="CSS\bootstrap.min.css" />
     <Content Include="CSS\MainStyle.css" />
-    <Content Include="HomePage.aspx" />
+    <Content Include="CSS\ApplicationGridStyle.css" />
+    <Content Include="default.htm" />
+    <Content Include="Images\capIcon.ico" />
     <Content Include="Images\Classes.jpg" />
     <Content Include="Images\Education.jpg" />
     <Content Include="Images\Graduation.jpg" />
     <Content Include="JavaScript\bootstrap.min.js" />
     <Content Include="JavaScript\jquery-3.4.1.min.js" />
     <Content Include="JavaScript\jquery.mask.js" />
-    <Content Include="StudentApplication.aspx" />
-    <Content Include="StudentLogin.aspx" />
+    <Content Include="WebForms\StudentApplicationForm.aspx" />
+    <Content Include="WebForms\StudentApplicationDetailView.aspx" />
+    <Content Include="WebForms\AdminLogin.aspx" />
+    <Content Include="WebForms\StudentLogin.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationsView.aspx.cs">
-      <DependentUpon>ApplicationsView.aspx</DependentUpon>
+    <Compile Include="CSharp\Models\ApplicationModel.cs" />
+    <Compile Include="CSharp\Models\PersonalInformation.cs" />
+    <Compile Include="CSharp\CustomUtilities.cs" />
+    <Compile Include="CSharp\Models\SecurityInformation.cs" />
+    <Compile Include="CSharp\PasswordManager.cs" />
+    <Compile Include="CSharp\Logger.cs" />
+    <Compile Include="CSharp\Models\StudentApplicationDetails.cs" />
+    <Compile Include="WebForms\StudentApplicationList.aspx.cs">
+      <DependentUpon>StudentApplicationList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ApplicationsView.aspx.designer.cs">
-      <DependentUpon>ApplicationsView.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="HomePage.aspx.cs">
-      <DependentUpon>HomePage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="HomePage.aspx.designer.cs">
-      <DependentUpon>HomePage.aspx</DependentUpon>
+    <Compile Include="WebForms\StudentApplicationList.aspx.designer.cs">
+      <DependentUpon>StudentApplicationList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SqliteDataAccess.cs" />
-    <Compile Include="StudentApplication.aspx.cs">
-      <DependentUpon>StudentApplication.aspx</DependentUpon>
+    <Compile Include="CSharp\SQLDataAccess.cs" />
+    <Compile Include="WebForms\StudentApplicationForm.aspx.cs">
+      <DependentUpon>StudentApplicationForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="StudentApplication.aspx.designer.cs">
-      <DependentUpon>StudentApplication.aspx</DependentUpon>
+    <Compile Include="WebForms\StudentApplicationForm.aspx.designer.cs">
+      <DependentUpon>StudentApplicationForm.aspx</DependentUpon>
     </Compile>
-    <Compile Include="StudentApplicationModel.cs" />
-    <Compile Include="StudentLogin.aspx.cs">
+    <Compile Include="CSharp\Models\BasicInformation.cs" />
+    <Compile Include="WebForms\StudentApplicationDetailView.aspx.cs">
+      <DependentUpon>StudentApplicationDetailView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\StudentApplicationDetailView.aspx.designer.cs">
+      <DependentUpon>StudentApplicationDetailView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\AdminLogin.aspx.cs">
+      <DependentUpon>AdminLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\AdminLogin.aspx.designer.cs">
+      <DependentUpon>AdminLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\StudentLogin.aspx.cs">
       <DependentUpon>StudentLogin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="StudentLogin.aspx.designer.cs">
+    <Compile Include="WebForms\StudentLogin.aspx.designer.cs">
       <DependentUpon>StudentLogin.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <Content Include="UniversityDB.db">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -163,9 +177,7 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
-    <Error Condition="!Exists('..\packages\System.Data.SQLite.Core.1.0.112.0\build\net46\System.Data.SQLite.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Data.SQLite.Core.1.0.112.0\build\net46\System.Data.SQLite.Core.targets'))" />
   </Target>
-  <Import Project="..\packages\System.Data.SQLite.Core.1.0.112.0\build\net46\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.112.0\build\net46\System.Data.SQLite.Core.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ABedirUniversity
+namespace ABedirUniversity.WebForms
 {
 
 
-    public partial class StudentApplication
+    public partial class StudentApplicationForm
     {
 
         /// <summary>
