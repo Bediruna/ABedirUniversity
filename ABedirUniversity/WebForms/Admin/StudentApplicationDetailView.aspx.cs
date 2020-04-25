@@ -10,7 +10,7 @@ namespace ABedirUniversity.WebForms.Admin
         {
             if (Session["user"] == null)
             {
-                Response.Redirect("AdminLogin.aspx");
+                Response.Redirect("/WebForms/AdminLogin.aspx");
             }
             else
             {

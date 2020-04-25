@@ -8,8 +8,9 @@ namespace ABedirUniversity.WebForms.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["user"] == null) { 
-                Response.Redirect("AdminLogin.aspx");
+            if (Session["user"] == null)
+            {
+                Response.Redirect("/WebForms/AdminLogin.aspx");
             }
             else
             {

@@ -13,7 +13,7 @@ namespace ABedirUniversity.WebForms.Student
         {
             if (Session["user"] == null)
             {
-                Response.Redirect("StudentLogin.aspx");
+                Response.Redirect("/WebForms/StudentLogin.aspx");
             }
             else
             {
