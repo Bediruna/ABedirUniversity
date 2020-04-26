@@ -4,7 +4,15 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="shortcut icon" href="/Images/capIcon.ico" />
+    <title>ABU | Admin Home</title>
+    <link href="https://fonts.googleapis.com/css?family=Lexend+Deca|Lexend+Zetta&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="/CSS/MainStyle.css" />
+    <link rel="stylesheet" type="text/css" href="/CSS/bootstrap.min.css" />
+    <script src="/JavaScript/jquery-3.4.1.min.js"></script>
+    <script src="/JavaScript/jquery.mask.js"></script>
+    <script src="/JavaScript/bootstrap.min.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">

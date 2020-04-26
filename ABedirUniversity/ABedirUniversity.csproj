@@ -71,6 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ErrorPage.htm" />
+    <Content Include="Images\Study.jpg" />
     <Content Include="WebForms\Admin\ActiveStudentsList.aspx" />
     <Content Include="WebForms\Admin\Home.aspx" />
     <Content Include="WebForms\Admin\StudentApplicationList.aspx" />

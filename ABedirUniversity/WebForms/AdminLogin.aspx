@@ -35,14 +35,14 @@
             <h1 class="text-center">Login to student portal</h1>
         </div>
 
-        <div class="center">
+        <div class="loginWidth center">
             <div class="form-group">
                 <input runat="server" type="text" class="form-control" id="usernameInput" aria-describedby="emailHelp" placeholder="Username" />
             </div>
             <div class="form-group">
                 <input runat="server" type="password" class="form-control" id="passwordInput" placeholder="Password" />
             </div>
-            <div>Contact support to get an Admin account.</div>
+            <div class="mb-2">Contact support to get an Admin account.</div>
             <asp:Button runat="server" ID="LoginSubmitBtn" OnClick="LoginSubmitBtn_Click" type="submit" class="btn btn-primary" Text ="Submit"/>
         </div>
     </form>

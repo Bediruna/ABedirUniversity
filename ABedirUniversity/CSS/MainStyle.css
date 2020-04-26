@@ -23,7 +23,10 @@
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
-
+.loginWidth {
+    width: 270px;
+}
+/*
 #ApplyBtn {
     width: 100px;
     background-color: blue;
@@ -39,18 +42,19 @@
         color: blue;
         cursor: pointer;
     }
-
+*/
 #uniText {
     font-size: 70px;
     font-weight: bold;
     color: white;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    user-select: none;
 }
 .button {
     border-radius: 7px;
     padding: 8px 0;
-    width: 100px;
-    height: 40px;
+    min-width: 100px;
+    min-height: 40px;
     text-align: center;
 }
 
@@ -62,6 +66,16 @@
 
     .greenFillButton:hover, .greenFillButton:focus {
         background-color: rgb(50, 200, 50);        
+    }
+
+.blueFillButton {
+    color: #fff;
+    background-color: rgb(70, 70, 250);
+    border:2px solid rgb(70, 70, 250);
+}
+
+    .blueFillButton:hover, .blueFillButton:focus {
+        background-color: rgb(100, 100, 250);        
     }
 
 .redFillButton {

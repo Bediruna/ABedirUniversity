@@ -24,31 +24,13 @@ namespace ABedirUniversity.WebForms
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// applicationDiv control.
+        /// ApplicationPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl applicationDiv;
-
-        /// <summary>
-        /// inputFirstName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText inputFirstName;
-
-        /// <summary>
-        /// inputLastName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText inputLastName;
+        protected global::System.Web.UI.WebControls.Panel ApplicationPanel;
 
         /// <summary>
         /// inputUsername control.
@@ -67,6 +49,24 @@ namespace ABedirUniversity.WebForms
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputPassword inputPassword;
+
+        /// <summary>
+        /// inputFirstName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText inputFirstName;
+
+        /// <summary>
+        /// inputLastName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText inputLastName;
 
         /// <summary>
         /// inputEmail control.
@@ -132,6 +132,15 @@ namespace ABedirUniversity.WebForms
         protected global::System.Web.UI.HtmlControls.HtmlInputText inputZip;
 
         /// <summary>
+        /// ErrorLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ErrorLabel;
+
+        /// <summary>
         /// SubmitApplicationBtn control.
         /// </summary>
         /// <remarks>
@@ -141,12 +150,12 @@ namespace ABedirUniversity.WebForms
         protected global::System.Web.UI.WebControls.Button SubmitApplicationBtn;
 
         /// <summary>
-        /// successDiv control.
+        /// SuccessMsg control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl successDiv;
+        protected global::System.Web.UI.WebControls.Label SuccessMsg;
     }
 }

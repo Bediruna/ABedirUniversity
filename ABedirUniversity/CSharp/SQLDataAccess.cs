@@ -31,7 +31,7 @@ namespace ABedirUniversity.CSharp
         {
             try
             {
-                string command = "SELECT Id, Status, FirstName, LastName, UserName, Email, PhoneNumber, Address1, Address2, City, State, ZipCode, CreateDate, UpdateDate" +
+                string command = "SELECT Id, Status, FirstName, LastName, Username, Email, PhoneNumber, Address1, Address2, City, State, ZipCode, CreateDate, UpdateDate" +
                     " FROM StudentApplications WHERE Id = " + applicationId;
                 using (IDbConnection cnn = new SqlConnection(dbConnectionString))
                 {
@@ -49,7 +49,7 @@ namespace ABedirUniversity.CSharp
         {
             try
             {
-                string command = "SELECT PasswordSalt FROM StudentApplications WHERE UserName = '" + userName + "' and ApplicantType = '" + applicantType + "'";
+                string command = "SELECT PasswordSalt FROM StudentApplications WHERE Username = '" + userName + "' and ApplicantType = '" + applicantType + "'";
                 using (IDbConnection cnn = new SqlConnection(dbConnectionString))
                 {
                     var output = cnn.ExecuteScalar(command, new DynamicParameters());
@@ -66,7 +66,7 @@ namespace ABedirUniversity.CSharp
         {
             try
             {
-                string command = "SELECT HashedPassword FROM StudentApplications WHERE UserName = '" + userName + "' and ApplicantType = '" + applicantType + "'";
+                string command = "SELECT HashedPassword FROM StudentApplications WHERE Username = '" + userName + "' and ApplicantType = '" + applicantType + "'";
                 using (IDbConnection cnn = new SqlConnection(dbConnectionString))
                 {
                     var output = cnn.ExecuteScalar(command, new DynamicParameters());
@@ -79,14 +79,31 @@ namespace ABedirUniversity.CSharp
                 return "";
             }
         }
+        public static bool IsUsernameAvailable(string userName, string applicantType)
+        {
+            try
+            {
+                string command = "SELECT Username FROM StudentApplications WHERE Username = '" + userName + "' and ApplicantType = '" + applicantType + "'";
+                using (IDbConnection cnn = new SqlConnection(dbConnectionString))
+                {
+                    var output = cnn.ExecuteScalar(command, new DynamicParameters());
+                    return output == null;
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex.ToString(), "CheckUsernameExistance");
+            }
+            return false;
+        }
         public static bool SaveApplication(StudentApplication application)
         {
             try
             {
                 using (IDbConnection cnn = new SqlConnection(dbConnectionString))
                 {
-                    string sqlInsertCommand = "INSERT INTO StudentApplications(FirstName, LastName, UserName, HashedPassword, Email, PhoneNumber, Address1, Address2, City, State, ZipCode, Status, CreateDate, UpdateDate, PasswordSalt, ApplicantType)" +
-                                              "VALUES(@FirstName, @LastName, @UserName, @HashedPassword, @Email, @PhoneNumber, @Address1, @Address2, @City, @State, @ZipCode, @Status, @CreateDate, @UpdateDate, @PasswordSalt, @ApplicantType)";
+                    string sqlInsertCommand = "INSERT INTO StudentApplications(FirstName, LastName, Username, HashedPassword, Email, PhoneNumber, Address1, Address2, City, State, ZipCode, Status, CreateDate, UpdateDate, PasswordSalt, ApplicantType)" +
+                                              "VALUES(@FirstName, @LastName, @Username, @HashedPassword, @Email, @PhoneNumber, @Address1, @Address2, @City, @State, @ZipCode, @Status, @CreateDate, @UpdateDate, @PasswordSalt, @ApplicantType)";
                     cnn.Execute(sqlInsertCommand, application);
                 }
             }
@@ -124,7 +141,7 @@ namespace ABedirUniversity.CSharp
                     Id = 1,
                     FirstName = "Joe",
                     LastName = "Test",
-                    UserName = "JoeUser",
+                    Username = "JoeUser",
                     Email = "joe@email.com",
                     PhoneNumber = "(407) 555-5555",
                     Address1 = "123 Elm St",

@@ -14,13 +14,14 @@
         $(document).ready(function () {
             runCarousel();
             $("#ApplyBtn").click(function () {
-                window.open('StudentApplicationForm.aspx', '_blank');
+                window.open('WebForms/StudentApplicationForm.aspx', '_blank');
             });
         });
 
         var imageIndex = 0;
+
         function runCarousel() {
-            var imageSrcArray = ["Images/Classes.jpg", "Images/Education.jpg", "Images/Graduation.jpg"];
+            var imageSrcArray = ["Images/Graduation.jpg", "Images/Education.jpg", "Images/Study.jpg", "Images/Classes.jpg"];
 
             $('#CarouselDiv').css("background-image", "url(" + imageSrcArray[imageIndex] + ")");
             if (imageIndex < imageSrcArray.length - 1) {
@@ -33,6 +34,7 @@
         }
     </script>
 </head>
+
 <body>
     <form id="form1" runat="server">
         <div id="CarouselDiv">
@@ -56,7 +58,7 @@
                 <div id="uniText">A Bedir University</div>
                 <br />
                 <br />
-                <span id="ApplyBtn">APPLY NOW</span>
+                <button id="ApplyBtn" style="width: 150px; height: 50px" class="button blueFillButton">APPLY NOW</button>
             </div>
         </div>
     </form>

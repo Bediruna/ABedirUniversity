@@ -18,6 +18,12 @@
             $("#inputPhoneNumber").mask('(999) 999-9999');
         });
     </script>
+    <style>
+        .ErrorMsg {
+            color: red;
+            font-size: 1.3em;
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -37,18 +43,8 @@
         </div>
     </nav>
     <form id="form1" runat="server">
-        <div runat="server" id="applicationDiv" class="p-5">
+        <asp:Panel runat="server" ID="ApplicationPanel" CssClass="p-5">
             <h1 class="text-center mb-5">Apply to A Bedir University</h1>
-            <div class="form-row">
-                <div class="form-group col-md-6 col-sm-12">
-                    <label for="inputFirstName">First Name</label>
-                    <input runat="server" type="text" class="form-control" id="inputFirstName" placeholder="First Name" required="required" />
-                </div>
-                <div class="form-group col-md-6 col-sm-12">
-                    <label for="inputLastName">Last Name</label>
-                    <input runat="server" type="text" class="form-control" id="inputLastName" placeholder="Last Name" required="required" />
-                </div>
-            </div>
             <div class="form-row">
                 <div class="form-group col-md-6 col-sm-12">
                     <label for="inputUsername">Username</label>
@@ -57,6 +53,16 @@
                 <div class="form-group col-md-6 col-sm-12">
                     <label for="inputPassword">Password</label>
                     <input runat="server" type="password" class="form-control" id="inputPassword" placeholder="Password" required="required" />
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6 col-sm-12">
+                    <label for="inputFirstName">First Name</label>
+                    <input runat="server" type="text" class="form-control" id="inputFirstName" placeholder="First Name" required="required" />
+                </div>
+                <div class="form-group col-md-6 col-sm-12">
+                    <label for="inputLastName">Last Name</label>
+                    <input runat="server" type="text" class="form-control" id="inputLastName" placeholder="Last Name" required="required" />
                 </div>
             </div>
             <div class="form-row">
@@ -144,10 +150,11 @@
                     <input runat="server" type="text" class="form-control" id="inputZip" placeholder="Zip" required="required" />
                 </div>
             </div>
-            <div>Already Enrolled? <a href="StudentLogin.aspx">Sign In</a></div>
+            <asp:Label runat="server" ID="ErrorLabel" CssClass="ErrorMsg" Visible="false"/>
+            <div class="mb-3">Already Enrolled? <a href="StudentLogin.aspx">Sign In</a></div>
             <asp:Button ID="SubmitApplicationBtn" runat="server" type="submit" CssClass="btn btn-primary" Text="Submit" OnClick="SubmitApplicationBtn_Click"></asp:Button>
-        </div>
-        <div runat="server" id="successDiv" class="text-center mb-5" visible="false">Thank you for applying to A Bedir University</div>
+            <asp:Label runat="server" ID="SuccessMsg" CssClass="text-center mb-5" Visible="false">Thank you for applying to A Bedir University</asp:Label>
+        </asp:Panel>
     </form>
 </body>
 </html>
