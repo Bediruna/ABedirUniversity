@@ -12,12 +12,34 @@ namespace ABedirUniversity.WebForms.Admin
 
         protected void LoginSubmitBtn_Click(object sender, EventArgs e)
         {
-            bool validation = PasswordManager.ValidatePassword(usernameInput.Value, passwordInput.Value, "admin");
-            if (validation)
+            string validationResult = PasswordManager.ValidateUser(usernameInput.Value, passwordInput.Value, "admin");
+            switch (validationResult)
             {
-                Session["user"] = usernameInput.Value;
-                Response.Redirect("Admin/Home.aspx");
+                case "Active":
+                    HideErrorMsg();
+                    Session["user"] = usernameInput.Value;
+                    Response.Redirect("Admin/Home.aspx");
+                    break;
+                case "Pending":
+                    ShowErrorMsg("Your application is still pending. Please try again later.");
+                    break;
+                case "Declined":
+                    ShowErrorMsg("Your application was declined. Please contact support.");
+                    break;
+                default:
+                    ShowErrorMsg();
+                    break;
             }
+        }
+        private void ShowErrorMsg(string errorMsg = "There was an error. Please try again later.")
+        {
+            ErrorLabel.Text = errorMsg;
+            ErrorLabel.Visible = true;
+        }
+        private void HideErrorMsg()
+        {
+            ErrorLabel.Text = "";
+            ErrorLabel.Visible = false;
         }
     }
 }

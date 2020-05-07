@@ -15,15 +15,9 @@
     <script src="/JavaScript/bootstrap.min.js"></script>
     <script>
         $(document).ready(function () {
-            $("#inputPhoneNumber").mask('(999) 999-9999');
+            $("#InputPhoneNumber").mask('(999) 999-9999');
         });
     </script>
-    <style>
-        .ErrorMsg {
-            color: red;
-            font-size: 1.3em;
-        }
-    </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -47,50 +41,52 @@
             <h1 class="text-center mb-5">Apply to A Bedir University</h1>
             <div class="form-row">
                 <div class="form-group col-md-6 col-sm-12">
-                    <label for="inputUsername">Username</label>
-                    <input runat="server" type="text" class="form-control" id="inputUsername" placeholder="Username" required="required" />
+                    <label for="InputUsername">Username</label>
+                    <input runat="server" type="text" class="form-control" id="InputUsername" placeholder="Username" required="required" />
                 </div>
                 <div class="form-group col-md-6 col-sm-12">
-                    <label for="inputPassword">Password</label>
-                    <input runat="server" type="password" class="form-control" id="inputPassword" placeholder="Password" required="required" />
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-6 col-sm-12">
-                    <label for="inputFirstName">First Name</label>
-                    <input runat="server" type="text" class="form-control" id="inputFirstName" placeholder="First Name" required="required" />
-                </div>
-                <div class="form-group col-md-6 col-sm-12">
-                    <label for="inputLastName">Last Name</label>
-                    <input runat="server" type="text" class="form-control" id="inputLastName" placeholder="Last Name" required="required" />
+                    <label for="InputPassword">Password</label>
+                    <input runat="server" type="password" class="form-control" id="InputPassword" placeholder="Password" required="required" />
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6 col-sm-12">
-                    <label for="inputEmail">Email</label>
-                    <input runat="server" type="email" class="form-control" id="inputEmail" placeholder="Email" />
+                    <label for="InputFirstName">First Name</label>
+                    <input runat="server" type="text" class="form-control" id="InputFirstName" placeholder="First Name" required="required" />
                 </div>
                 <div class="form-group col-md-6 col-sm-12">
-                    <label for="inputPhoneNumber">Phone Number</label>
-                    <input runat="server" type="tel" class="form-control" id="inputPhoneNumber" placeholder="Phone Number" />
+                    <label for="InputLastName">Last Name</label>
+                    <input runat="server" type="text" class="form-control" id="InputLastName" placeholder="Last Name" required="required" />
                 </div>
-            </div>
-            <div class="form-group">
-                <label for="inputAddress">Address</label>
-                <input runat="server" type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" required="required" />
-            </div>
-            <div class="form-group">
-                <label for="inputAddress2">Address 2</label>
-                <input runat="server" type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" />
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6 col-sm-12">
-                    <label for="inputCity">City</label>
-                    <input runat="server" type="text" class="form-control" id="inputCity" placeholder="City" required="required" />
+                    <label for="InputEmail">Email</label>
+                    <input runat="server" type="email" class="form-control" id="InputEmail" placeholder="Email" />
+                </div>
+                <div class="form-group col-md-6 col-sm-12">
+                    <label for="InputPhoneNumber">Phone Number</label>
+                    <input runat="server" type="tel" class="form-control" id="InputPhoneNumber" placeholder="Phone Number" />
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6 col-sm-12">
+                    <label for="InputAddress">Address</label>
+                    <input runat="server" type="text" class="form-control" id="InputAddress" placeholder="1234 Main St" required="required" />
+                </div>
+                <div class="form-group col-md-6 col-sm-12">
+                    <label for="InputAddress2">Address 2</label>
+                    <input runat="server" type="text" class="form-control" id="InputAddress2" placeholder="Apartment, studio, or floor" />
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6 col-sm-12">
+                    <label for="InputCity">City</label>
+                    <input runat="server" type="text" class="form-control" id="InputCity" placeholder="City" required="required" />
                 </div>
                 <div class="form-group col-md-4 col-sm-12">
-                    <label for="inputState">State</label>
-                    <select runat="server" id="inputState" class="form-control" required="required">
+                    <label for="InputState">State</label>
+                    <select runat="server" id="InputState" class="form-control" required="required">
                         <option>Choose...</option>
                         <option value="AL">Alabama</option>
                         <option value="AK">Alaska</option>
@@ -146,11 +142,11 @@
                     </select>
                 </div>
                 <div class="form-group col-md-2 col-sm-12">
-                    <label for="inputZip">Zip</label>
-                    <input runat="server" type="text" class="form-control" id="inputZip" placeholder="Zip" required="required" />
+                    <label for="InputZip">Zip Code</label>
+                    <input runat="server" type="text" class="form-control" id="InputZip" placeholder="Zip Code" required="required" />
                 </div>
             </div>
-            <asp:Label runat="server" ID="ErrorLabel" CssClass="ErrorMsg" Visible="false"/>
+            <asp:Label runat="server" ID="ErrorLabel" CssClass="ErrorMsg" Visible="false" />
             <div class="mb-3">Already Enrolled? <a href="StudentLogin.aspx">Sign In</a></div>
             <asp:Button ID="SubmitApplicationBtn" runat="server" type="submit" CssClass="btn btn-primary" Text="Submit" OnClick="SubmitApplicationBtn_Click"></asp:Button>
             <asp:Label runat="server" ID="SuccessMsg" CssClass="text-center mb-5" Visible="false">Thank you for applying to A Bedir University</asp:Label>

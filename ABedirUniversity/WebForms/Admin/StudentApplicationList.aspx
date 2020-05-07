@@ -162,10 +162,10 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="AdminLogin.aspx">Active Students</a>
+                        <a class="nav-link" href="ActiveStudentsList.aspx">Active Students</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="StudentLogin.aspx">Student Applications</a>
+                        <a class="nav-link" href="StudentApplicationList.aspx">Student Applications</a>
                     </li>
                 </ul>
             </div>

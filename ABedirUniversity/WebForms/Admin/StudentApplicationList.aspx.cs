@@ -14,7 +14,7 @@ namespace ABedirUniversity.WebForms.Admin
             }
             else
             {
-                ApplicationsGridView.DataSource = SQLDataAccess.GetApplications();
+                ApplicationsGridView.DataSource = SQLDataAccess.GetStudentApplications();
                 ApplicationsGridView.DataBind();
             }
         }

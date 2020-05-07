@@ -12,7 +12,7 @@ namespace ABedirUniversity.WebForms
 
         protected void SubmitApplicationBtn_Click(object sender, EventArgs e)
         {
-            if (SQLDataAccess.IsUsernameAvailable(inputUsername.Value, "student"))
+            if (SQLDataAccess.IsUsernameAvailable(InputUsername.Value, "student"))
             {
                 HideErrorMsg();
 
@@ -21,20 +21,20 @@ namespace ABedirUniversity.WebForms
                 StudentApplication application = new StudentApplication
                 {
                     Status = "Pending",
-                    FirstName = inputFirstName.Value,
-                    LastName = inputLastName.Value,
+                    FirstName = InputFirstName.Value,
+                    LastName = InputLastName.Value,
                     CreateDate = DateTime.Now,
                     UpdateDate = DateTime.Now,
-                    Username = inputUsername.Value,
-                    HashedPassword = PasswordManager.HashPassword(inputPassword.Value, salt),
+                    Username = InputUsername.Value,
+                    HashedPassword = PasswordManager.HashPassword(InputPassword.Value, salt),
                     PasswordSalt = salt,
-                    Email = inputEmail.Value,
-                    PhoneNumber = inputPhoneNumber.Value,
-                    Address1 = inputAddress.Value,
-                    Address2 = inputAddress2.Value,
-                    City = inputCity.Value,
-                    State = inputState.Value,
-                    ZipCode = inputZip.Value,
+                    Email = InputEmail.Value,
+                    PhoneNumber = InputPhoneNumber.Value,
+                    Address1 = InputAddress.Value,
+                    Address2 = InputAddress2.Value,
+                    City = InputCity.Value,
+                    State = InputState.Value,
+                    ZipCode = InputZip.Value,
                     ApplicantType = "student"
                 };
 

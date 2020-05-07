@@ -32,16 +32,17 @@
             </div>
         </nav>
         <div class="p-4">
-            <h1 class="text-center">Login to student portal</h1>
+            <h1 class="text-center">Login to ABU Student Portal</h1>
         </div>
 
-        <div class="loginWidth center">
+        <div class="loginSection">
             <div class="form-group">
                 <input runat="server" type="text" class="form-control" id="usernameInput" aria-describedby="emailHelp" placeholder="Username" />
             </div>
             <div class="form-group">
                 <input runat="server" type="password" class="form-control" id="passwordInput" placeholder="Password" />
             </div>
+            <asp:Label runat="server" ID="ErrorLabel" CssClass="ErrorMsg" />
             <div class="mb-2">Not Enrolled? Apply <a href="StudentApplicationForm.aspx">Here</a></div>
             <asp:Button runat="server" ID="LoginSubmitBtn" OnClick="LoginSubmitBtn_Click" type="submit" class="btn btn-primary" Text="Submit" />
         </div>

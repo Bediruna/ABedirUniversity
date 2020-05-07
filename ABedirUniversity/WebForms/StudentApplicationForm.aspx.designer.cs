@@ -33,103 +33,103 @@ namespace ABedirUniversity.WebForms
         protected global::System.Web.UI.WebControls.Panel ApplicationPanel;
 
         /// <summary>
-        /// inputUsername control.
+        /// InputUsername control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText inputUsername;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText InputUsername;
 
         /// <summary>
-        /// inputPassword control.
+        /// InputPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputPassword inputPassword;
+        protected global::System.Web.UI.HtmlControls.HtmlInputPassword InputPassword;
 
         /// <summary>
-        /// inputFirstName control.
+        /// InputFirstName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText inputFirstName;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText InputFirstName;
 
         /// <summary>
-        /// inputLastName control.
+        /// InputLastName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText inputLastName;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText InputLastName;
 
         /// <summary>
-        /// inputEmail control.
+        /// InputEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl inputEmail;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl InputEmail;
 
         /// <summary>
-        /// inputPhoneNumber control.
+        /// InputPhoneNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl inputPhoneNumber;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl InputPhoneNumber;
 
         /// <summary>
-        /// inputAddress control.
+        /// InputAddress control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText inputAddress;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText InputAddress;
 
         /// <summary>
-        /// inputAddress2 control.
+        /// InputAddress2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText inputAddress2;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText InputAddress2;
 
         /// <summary>
-        /// inputCity control.
+        /// InputCity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText inputCity;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText InputCity;
 
         /// <summary>
-        /// inputState control.
+        /// InputState control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlSelect inputState;
+        protected global::System.Web.UI.HtmlControls.HtmlSelect InputState;
 
         /// <summary>
-        /// inputZip control.
+        /// InputZip control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText inputZip;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText InputZip;
 
         /// <summary>
         /// ErrorLabel control.

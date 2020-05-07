@@ -13,10 +13,12 @@ namespace ABedirUniversity.WebForms.Admin
         {
             if (Session["user"] == null)
             {
-                //Response.Redirect("/WebForms/AdminLogin.aspx");
+                Response.Redirect("/WebForms/AdminLogin.aspx");
             }
             else
             {
+                //string username = Session["user"].ToString();
+                //UsernameLabel.Text = "Welcome " + username;
             }
         }
     }

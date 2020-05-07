@@ -32,6 +32,7 @@
                 </ul>
             </div>
         </nav>
+        <asp:Label runat="server" ID="UsernameLabel"></asp:Label>
     </form>
 </body>
 </html>

@@ -47,7 +47,7 @@ namespace ABedirUniversity.WebForms.Admin
 
         protected void ApproveButton_Click(object sender, EventArgs e)
         {
-            SQLDataAccess.UpdateApplicationStatus(hiddenApplicationID.Value, "Approved");
+            SQLDataAccess.UpdateApplicationStatus(hiddenApplicationID.Value, "Active");
         }
 
         protected void DeclineButton_Click(object sender, EventArgs e)

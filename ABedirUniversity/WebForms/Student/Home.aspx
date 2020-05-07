@@ -31,6 +31,21 @@
                 </ul>
             </div>
         </nav>
+        <div class="p-5">
+            <asp:Label runat="server" ID="UsernameLabel" />
+            <span>Welcome Bedir!</span>
+            <div class="container">
+                <div class="row">
+                    <div class="col-6" style="background-color:red;">
+                        One of three columns
+                    </div>
+                    <div class="col-6" style="background-color:green;">
+                        One of three columns
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </form>
 </body>
 </html>

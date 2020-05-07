@@ -10,11 +10,11 @@ namespace ABedirUniversity.CSharp
     public class SQLDataAccess
     {
         readonly static string dbConnectionString = "Persist Security Info=False;server=db825511962.hosting-data.io,1433;Initial Catalog=db825511962;User ID=dbo825511962;Password=ABedirDB2020.";
-        public static List<BasicInformation> GetApplications()
+        public static List<BasicInformation> GetStudentApplications()
         {
             try
             {
-                string command = "SELECT Id, FirstName, LastName, CreateDate, UpdateDate, Status FROM StudentApplications";
+                string command = "SELECT Id, FirstName, LastName, CreateDate, UpdateDate, Status FROM StudentApplications WHERE ApplicantType = 'student'";
                 using (IDbConnection cnn = new SqlConnection(dbConnectionString))
                 {
                     var output = cnn.Query<BasicInformation>(command, new DynamicParameters());
@@ -45,21 +45,29 @@ namespace ABedirUniversity.CSharp
                 return GetSampleApplication();
             }
         }
-        public static string GetAccountSalt(string userName, string applicantType)
+        public static SecurityInformation GetSecurityInfo(string userName, string applicantType)
         {
+            SecurityInformation securityInformation = new SecurityInformation();
             try
             {
-                string command = "SELECT PasswordSalt FROM StudentApplications WHERE Username = '" + userName + "' and ApplicantType = '" + applicantType + "'";
+                string command = "SELECT Status, HashedPassword, PasswordSalt FROM StudentApplications WHERE Username = @Username and ApplicantType = @ApplicantType";
                 using (IDbConnection cnn = new SqlConnection(dbConnectionString))
                 {
-                    var output = cnn.ExecuteScalar(command, new DynamicParameters());
-                    return output.ToString();
+                    var reader = cnn.ExecuteReader(command, new { Username = userName, ApplicantType = applicantType});
+
+                    while (reader.Read())
+                    {
+                        securityInformation.Status = reader["Status"].ToString();
+                        securityInformation.HashedPassword = reader["HashedPassword"].ToString();
+                        securityInformation.PasswordSalt = reader["PasswordSalt"].ToString();
+                    }
+                    return securityInformation;
                 }
             }
             catch (Exception ex)
             {
                 Logger.LogError(ex.ToString(), "GetAccountSalt");
-                return "";
+                return null;
             }
         }
         public static string GetHashedPassword(string userName, string applicantType)

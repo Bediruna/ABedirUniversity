@@ -14,41 +14,20 @@
     background-size: cover;
     text-align: center;
 }
-
-.center {
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-}
-.loginWidth {
-    width: 270px;
-}
-/*
-#ApplyBtn {
-    width: 100px;
-    background-color: blue;
-    border-radius: 10px;
-    border: 2px solid blue;
-    padding: 15px;
-    font-weight: bold;
-    color: white;
-}
-
-    #ApplyBtn:hover {
-        background-color: white;
-        color: blue;
-        cursor: pointer;
-    }
-*/
 #uniText {
     font-size: 70px;
     font-weight: bold;
     color: white;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     user-select: none;
+}
+.ErrorMsg {
+    color: red;
+    font-size: 1.3em;
+}
+.loginSection {
+    width: 270px;
+    margin: 10vh auto;
 }
 .button {
     border-radius: 7px;
