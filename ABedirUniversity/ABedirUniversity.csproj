@@ -131,7 +131,7 @@
     <Compile Include="WebForms\StudentApplicationForm.aspx.designer.cs">
       <DependentUpon>StudentApplicationForm.aspx</DependentUpon>
     </Compile>
-    <Compile Include="CSharp\DataModels\BasicInformation.cs" />
+    <Compile Include="CSharp\DataModels\PersonalInformation.cs" />
     <Compile Include="WebForms\Admin\StudentApplicationDetailView.aspx.cs">
       <DependentUpon>StudentApplicationDetailView.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
