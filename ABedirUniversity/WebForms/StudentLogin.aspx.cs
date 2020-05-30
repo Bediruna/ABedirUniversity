@@ -18,7 +18,7 @@ namespace ABedirUniversity.WebForms
                 case "Active":
                     HideErrorMsg();
                     Session["user"] = usernameInput.Value;
-                    Response.Redirect("Student/Home.aspx");
+                    Response.Redirect("StudentForms/Home.aspx");
                     break;
                 case "Pending":
                     ShowErrorMsg("Your application is still pending. Please try again later.");

@@ -16,7 +16,7 @@ namespace ABedirUniversity.CSharp
             }
             else
             {
-                if (string.IsNullOrEmpty(securityInfo.Status) ||
+                if (string.IsNullOrEmpty(securityInfo.UserStatus) ||
                     string.IsNullOrEmpty(securityInfo.HashedPassword) ||
                     string.IsNullOrEmpty(securityInfo.PasswordSalt))
                 {
@@ -27,7 +27,7 @@ namespace ABedirUniversity.CSharp
                     string hashedInputPassword = HashPassword(inputPassword, securityInfo.PasswordSalt);
                     if (securityInfo.HashedPassword.Equals(hashedInputPassword))
                     {
-                        return securityInfo.Status;
+                        return securityInfo.UserStatus;
                     }
                     else
                     {

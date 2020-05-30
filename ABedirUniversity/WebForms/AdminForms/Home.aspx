@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="ABedirUniversity.WebForms.Admin.Home" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="ABedirUniversity.WebForms.AdminForms.Home" %>
 
 <!DOCTYPE html>
 

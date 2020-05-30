@@ -1,6 +1,8 @@
-﻿using Dapper;
+﻿using ABedirUniversity.CSharp.DataModels;
+using Dapper;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -9,55 +11,66 @@ namespace ABedirUniversity.CSharp
 {
     public class SQLDataAccess
     {
-        readonly static string dbConnectionString = "Persist Security Info=False;server=db825511962.hosting-data.io,1433;Initial Catalog=db825511962;User ID=dbo825511962;Password=ABedirDB2020.";
-        public static List<BasicInformation> GetStudentApplications()
+        //readonly static string dbConnectionString = "Persist Security Info=False;server=db825511962.hosting-data.io,1433;Initial Catalog=db825511962;User ID=dbo825511962;Password=ABedirDB2020.";
+        readonly static string dbConnectionString = ConfigurationManager.ConnectionStrings["DataBaseConnectionString"].ConnectionString;
+
+        public static List<StudentApplicationListItem> GetStudentApplications()
         {
             try
             {
-                string command = "SELECT Id, FirstName, LastName, CreateDate, UpdateDate, Status FROM StudentApplications WHERE ApplicantType = 'student'";
+                string command = "SELECT sa.ID, pi.FirstName, pi.LastName, si.UserCreateDate " +
+                    "FROM (((StudentApplication sa " +
+                    "JOIN Student st ON sa.StudentID = st.ID) " +
+                    "JOIN PersonalInformation pi ON st.PersonalInfoID = pi.ID) " +
+                    "JOIN SecurityInformation si ON st.SecurityInfoID = si.ID)";
                 using (IDbConnection cnn = new SqlConnection(dbConnectionString))
                 {
-                    var output = cnn.Query<BasicInformation>(command, new DynamicParameters());
+                    var output = cnn.Query<StudentApplicationListItem>(command, new DynamicParameters());
                     return output.ToList();
                 }
             }
             catch (Exception ex)
             {
                 Logger.LogError(ex.ToString(), "GetApplications");
-                return GetSampleApplications();
+                return null;
             }
         }
-        public static List<StudentApplication> GetApplicationDetails(int applicationId)
+        public static List<StudentApplicationDetailItem> GetApplicationDetails(int applicationId)
         {
             try
             {
-                string command = "SELECT Id, Status, FirstName, LastName, Username, Email, PhoneNumber, Address1, Address2, City, State, ZipCode, CreateDate, UpdateDate" +
-                    " FROM StudentApplications WHERE Id = " + applicationId;
+                string command = "SELECT sa.ID, sa.ApplicationStatus, pi.FirstName, pi.LastName, si.UserName, pi.PhoneNumber, pi.EmailAddress, ai.Address, ai.Address2, ai.City, ai.State, ai.ZipCode, si.UserCreateDate " +
+                    "FROM((((StudentApplication sa JOIN Student st ON sa.StudentID = st.ID) " +
+                    "JOIN PersonalInformation pi ON st.PersonalInfoID = pi.ID) " +
+                    "JOIN SecurityInformation si ON st.SecurityInfoID = si.ID) " +
+                    "JOIN AddressInformation ai ON st.AddressInfoID = ai.ID) " +
+                    "WHERE sa.ID = @applicationId";
                 using (IDbConnection cnn = new SqlConnection(dbConnectionString))
                 {
-                    var output = cnn.Query<StudentApplication>(command, new DynamicParameters());
+                    var output = cnn.Query<StudentApplicationDetailItem>(command, new { applicationId });
+
                     return output.ToList();
                 }
             }
             catch (Exception ex)
             {
                 Logger.LogError(ex.ToString(), "GetApplicationDetails");
-                return GetSampleApplication();
+                return null;
             }
         }
-        public static SecurityInformation GetSecurityInfo(string userName, string applicantType)
+        public static SecurityInformation GetSecurityInfo(string userName, string userType)
         {
             SecurityInformation securityInformation = new SecurityInformation();
             try
             {
-                string command = "SELECT Status, HashedPassword, PasswordSalt FROM StudentApplications WHERE Username = @Username and ApplicantType = @ApplicantType";
+                string command = "SELECT UserStatus, HashedPassword, PasswordSalt FROM SecurityInformation WHERE Username = @Username and UserType = @UserType";
                 using (IDbConnection cnn = new SqlConnection(dbConnectionString))
                 {
-                    var reader = cnn.ExecuteReader(command, new { Username = userName, ApplicantType = applicantType});
+                    var reader = cnn.ExecuteReader(command, new { Username = userName, UserType = userType });
 
                     while (reader.Read())
                     {
-                        securityInformation.Status = reader["Status"].ToString();
+                        securityInformation.UserStatus = reader["UserStatus"].ToString();
                         securityInformation.HashedPassword = reader["HashedPassword"].ToString();
                         securityInformation.PasswordSalt = reader["PasswordSalt"].ToString();
                     }
@@ -87,11 +100,11 @@ namespace ABedirUniversity.CSharp
                 return "";
             }
         }
-        public static bool IsUsernameAvailable(string userName, string applicantType)
+        public static bool IsUsernameAvailable(string userName, string userType)
         {
             try
             {
-                string command = "SELECT Username FROM StudentApplications WHERE Username = '" + userName + "' and ApplicantType = '" + applicantType + "'";
+                string command = "SELECT Username FROM SecurityInformation WHERE Username = '" + userName + "' and UserType = '" + userType + "'";
                 using (IDbConnection cnn = new SqlConnection(dbConnectionString))
                 {
                     var output = cnn.ExecuteScalar(command, new DynamicParameters());
@@ -104,23 +117,115 @@ namespace ABedirUniversity.CSharp
             }
             return false;
         }
-        public static bool SaveApplication(StudentApplication application)
+        public static int InsertStudentApplication(StudentApplication application)
         {
+            int rowID = -1;
             try
             {
                 using (IDbConnection cnn = new SqlConnection(dbConnectionString))
                 {
-                    string sqlInsertCommand = "INSERT INTO StudentApplications(FirstName, LastName, Username, HashedPassword, Email, PhoneNumber, Address1, Address2, City, State, ZipCode, Status, CreateDate, UpdateDate, PasswordSalt, ApplicantType)" +
-                                              "VALUES(@FirstName, @LastName, @Username, @HashedPassword, @Email, @PhoneNumber, @Address1, @Address2, @City, @State, @ZipCode, @Status, @CreateDate, @UpdateDate, @PasswordSalt, @ApplicantType)";
-                    cnn.Execute(sqlInsertCommand, application);
+                    string sql = @"
+                        INSERT INTO StudentApplication(StudentID, ApplicationStatus, SubmitDateTime)
+                        VALUES(@StudentID, @Status, @SubmitDateTime);
+                        SELECT CAST(SCOPE_IDENTITY() as int)";
+
+                    rowID = cnn.Query<int>(sql, application).Single();
                 }
             }
             catch (Exception ex)
             {
-                Logger.LogError(ex.ToString(), "SaveApplication");
-                return false;
+                Logger.LogError(ex.ToString(), "InsertStudentApplication");
+                return rowID;
             }
-            return true;
+            return rowID;
+        }
+        public static int InsertSecurityInfo(SecurityInformation securityInfo)
+        {
+            int rowID = -1;
+            try
+            {
+                using (IDbConnection cnn = new SqlConnection(dbConnectionString))
+                {
+                    string sql = @"
+                        INSERT INTO SecurityInformation(Username, HashedPassword, PasswordSalt, IPAddress, UserStatus, LastLoginDate, UserCreateDate, UserType)
+                        VALUES(@Username, @HashedPassword, @PasswordSalt, @IPAddress, @UserStatus, @LastLoginDate, @UserCreateDate, @UserType);
+                        SELECT CAST(SCOPE_IDENTITY() as int)";
+
+                    rowID = cnn.Query<int>(sql, securityInfo).Single();
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex.ToString(), "InsertSecurityInfo");
+                return rowID;
+            }
+            return rowID;
+        }
+        public static int InsertPersonalInfo(PersonalInformation personalInfo)
+        {
+            int rowID = -1;
+            try
+            {
+                using (IDbConnection cnn = new SqlConnection(dbConnectionString))
+                {
+                    string sql = @"
+                        INSERT INTO PersonalInformation(FirstName, LastName, PhoneNumber, EmailAddress)
+                        VALUES(@FirstName, @LastName, @PhoneNumber, @EmailAddress);
+                        SELECT CAST(SCOPE_IDENTITY() as int)";
+
+                    rowID = cnn.Query<int>(sql, personalInfo).Single();
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex.ToString(), "InsertPersonalInfo");
+                return rowID;
+            }
+            return rowID;
+        }
+        public static int InsertAddressInfo(AddressInformation addressInfo)
+        {
+            int rowID = -1;
+            try
+            {
+                using (IDbConnection cnn = new SqlConnection(dbConnectionString))
+                {
+                    string sql = @"
+                        INSERT INTO AddressInformation(Address, Address2, City, State, ZipCode)
+                        VALUES(@Address, @Address2, @City, @State, @ZipCode);
+                        SELECT CAST(SCOPE_IDENTITY() as int)";
+
+                    rowID = cnn.Query<int>(sql, addressInfo).Single();
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex.ToString(), "InsertAddressInfo");
+                return rowID;
+            }
+            return rowID;
+        }
+        public static int InsertStudent(Student student)
+        {
+            int rowID = -1;
+            try
+            {
+                using (IDbConnection cnn = new SqlConnection(dbConnectionString))
+                {
+                    string sql = @"
+                        INSERT INTO Student(SecurityInfoID, PersonalInfoID, AddressInfoID)
+                        VALUES(@SecurityInfoID, @PersonalInfoID, @AddressInfoID);
+                        SELECT CAST(SCOPE_IDENTITY() as int)";
+
+                    rowID = cnn.Query<int>(sql, student).Single();
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex.ToString(), "InsertStudent");
+                return rowID;
+            }
+            return rowID;
         }
         public static bool UpdateApplicationStatus(string applicationId, string newStatus)
         {
@@ -128,7 +233,7 @@ namespace ABedirUniversity.CSharp
             {
                 using (IDbConnection connection = new SqlConnection(dbConnectionString))
                 {
-                    string sqlUpdateCommand = "UPDATE StudentApplications SET Status = '" + newStatus + "' WHERE Id = " + applicationId;
+                    string sqlUpdateCommand = "UPDATE StudentApplications SET ApplicationStatus = '" + newStatus + "' WHERE Id = " + applicationId;
                     connection.Execute(sqlUpdateCommand);
                 }
             }
@@ -139,81 +244,5 @@ namespace ABedirUniversity.CSharp
             }
             return true;
         }
-        #region temp sample code
-        public static List<StudentApplication> GetSampleApplication()
-        {
-            return new List<StudentApplication>
-            {
-                new StudentApplication()
-                {
-                    Id = 1,
-                    FirstName = "Joe",
-                    LastName = "Test",
-                    Username = "JoeUser",
-                    Email = "joe@email.com",
-                    PhoneNumber = "(407) 555-5555",
-                    Address1 = "123 Elm St",
-                    Address2 = "Apt 2",
-                    City = "Elmsfield",
-                    State = "Florida",
-                    ZipCode = "32884",
-                    CreateDate = DateTime.Now,
-                    UpdateDate = DateTime.Now,
-                    Status = "Active"
-                }
-            };
-        }
-        public static List<BasicInformation> GetSampleApplications()
-        {
-            return new List<BasicInformation>
-            {
-                new BasicInformation()
-                {
-                    Id = 1,
-                    FirstName = "Joe",
-                    LastName = "Test",
-                    CreateDate = DateTime.Now,
-                    UpdateDate = DateTime.Now,
-                    Status = "Active"
-                },
-                new BasicInformation()
-                {
-                    Id = 2,
-                    FirstName = "Jane",
-                    LastName = "Doe",
-                    CreateDate = DateTime.Now,
-                    UpdateDate = DateTime.Now,
-                    Status = "Active"
-                },
-                new BasicInformation()
-                {
-                    Id = 3,
-                    FirstName = "Dwight",
-                    LastName = "Schrute",
-                    CreateDate = DateTime.Now,
-                    UpdateDate = DateTime.Now,
-                    Status = "Active"
-                },
-                new BasicInformation()
-                {
-                    Id = 4,
-                    FirstName = "Pam",
-                    LastName = "Halpert",
-                    CreateDate = DateTime.Now,
-                    UpdateDate = DateTime.Now,
-                    Status = "Active"
-                },
-                new BasicInformation()
-                {
-                    Id = 5,
-                    FirstName = "Jim",
-                    LastName = "Halper",
-                    CreateDate = DateTime.Now,
-                    UpdateDate = DateTime.Now,
-                    Status = "Active"
-                }
-            };
-        }
-        #endregion
     }
 }

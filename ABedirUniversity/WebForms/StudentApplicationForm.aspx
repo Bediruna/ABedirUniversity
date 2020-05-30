@@ -13,6 +13,7 @@
     <script src="/JavaScript/jquery-3.4.1.min.js"></script>
     <script src="/JavaScript/jquery.mask.js"></script>
     <script src="/JavaScript/bootstrap.min.js"></script>
+    <script src="/JavaScript/MainScript.js"></script>
     <script>
         $(document).ready(function () {
             $("#InputPhoneNumber").mask('(999) 999-9999');
@@ -37,6 +38,7 @@
         </div>
     </nav>
     <form id="form1" runat="server">
+        <div class="loadingScreen"></div>
         <asp:Panel runat="server" ID="ApplicationPanel" CssClass="p-5">
             <h1 class="text-center mb-5">Apply to A Bedir University</h1>
             <div class="form-row">
@@ -143,13 +145,17 @@
                 </div>
                 <div class="form-group col-md-2 col-sm-12">
                     <label for="InputZip">Zip Code</label>
-                    <input runat="server" type="text" class="form-control" id="InputZip" placeholder="Zip Code" required="required" />
+                    <input runat="server" type="text" class="form-control" id="InputZip" placeholder="Zip Code" required="required" maxlength="10" />
                 </div>
             </div>
             <asp:Label runat="server" ID="ErrorLabel" CssClass="ErrorMsg" Visible="false" />
             <div class="mb-3">Already Enrolled? <a href="StudentLogin.aspx">Sign In</a></div>
             <asp:Button ID="SubmitApplicationBtn" runat="server" type="submit" CssClass="btn btn-primary" Text="Submit" OnClick="SubmitApplicationBtn_Click"></asp:Button>
-            <asp:Label runat="server" ID="SuccessMsg" CssClass="text-center mb-5" Visible="false">Thank you for applying to A Bedir University</asp:Label>
+        </asp:Panel>
+        <asp:Panel runat="server" ID="SuccessPanel" CssClass="text-center p-5" Visible="false">
+            <h1>Thank you for applying to A Bedir University</h1>
+            <h2>Your application Number is</h2>
+            <asp:Label runat="server" ID="ApplicationNumber" CssClass="h2"></asp:Label>
         </asp:Panel>
     </form>
 </body>

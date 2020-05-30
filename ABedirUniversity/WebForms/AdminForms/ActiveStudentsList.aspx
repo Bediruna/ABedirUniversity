@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="TermList.aspx.cs" Inherits="ABedirUniversity.WebForms.Student.TermList" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ActiveStudentsList.aspx.cs" Inherits="ABedirUniversity.WebForms.AdminForms.ActiveStudentsList" %>
 
 <!DOCTYPE html>
 
@@ -6,11 +6,12 @@
 <head runat="server">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="shortcut icon" href="/Images/capIcon.ico" />
-    <title>ABU | Term List</title>
+    <title>ABU | Active Students</title>
     <link href="https://fonts.googleapis.com/css?family=Lexend+Deca|Lexend+Zetta&display=swap" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="/CSS/MainStyle.css" />
     <link rel="stylesheet" type="text/css" href="/CSS/bootstrap.min.css" />
     <script src="/JavaScript/jquery-3.4.1.min.js"></script>
+    <script src="/JavaScript/jquery.mask.js"></script>
     <script src="/JavaScript/bootstrap.min.js"></script>
 </head>
 <body>
@@ -23,10 +24,10 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="ClassList.aspx">Classes</a>
+                        <a class="nav-link" href="ActiveStudentsList.aspx">Active Students</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="TermList.aspx">Terms</a>
+                        <a class="nav-link" href="StudentApplicationList.aspx">Student Applications</a>
                     </li>
                 </ul>
             </div>

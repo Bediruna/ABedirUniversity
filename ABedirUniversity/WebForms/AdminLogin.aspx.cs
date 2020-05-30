@@ -13,22 +13,15 @@ namespace ABedirUniversity.WebForms.Admin
         protected void LoginSubmitBtn_Click(object sender, EventArgs e)
         {
             string validationResult = PasswordManager.ValidateUser(usernameInput.Value, passwordInput.Value, "admin");
-            switch (validationResult)
+            if (validationResult == "active")
             {
-                case "Active":
-                    HideErrorMsg();
-                    Session["user"] = usernameInput.Value;
-                    Response.Redirect("Admin/Home.aspx");
-                    break;
-                case "Pending":
-                    ShowErrorMsg("Your application is still pending. Please try again later.");
-                    break;
-                case "Declined":
-                    ShowErrorMsg("Your application was declined. Please contact support.");
-                    break;
-                default:
-                    ShowErrorMsg();
-                    break;
+                HideErrorMsg();
+                Session["user"] = usernameInput.Value;
+                Response.Redirect("AdminForms/Home.aspx");
+            }
+            else
+            {
+                ShowErrorMsg();
             }
         }
         private void ShowErrorMsg(string errorMsg = "There was an error. Please try again later.")

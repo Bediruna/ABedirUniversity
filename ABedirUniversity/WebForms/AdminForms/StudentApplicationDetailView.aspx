@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="StudentApplicationDetailView.aspx.cs" Inherits="ABedirUniversity.WebForms.Admin.StudentApplicationDetailView" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="StudentApplicationDetailView.aspx.cs" Inherits="ABedirUniversity.WebForms.AdminForms.StudentApplicationDetailView" %>
 
 <!DOCTYPE html>
 
@@ -66,7 +66,7 @@
             }
 
             td:nth-of-type(2):before {
-                content: "Status";
+                content: "Application Status";
             }
 
             td:nth-of-type(3):before {
@@ -82,11 +82,11 @@
             }
 
             td:nth-of-type(6):before {
-                content: "Email";
+                content: "Phone Number";
             }
 
             td:nth-of-type(7):before {
-                content: "Phone Number";
+                content: "Email Address";
             }
 
             td:nth-of-type(8):before {
@@ -111,10 +111,6 @@
 
             td:nth-of-type(13):before {
                 content: "Create Date";
-            }
-
-            td:nth-of-type(14):before {
-                content: "Update Date";
             }
 
         #ApplicationDetailsLabel {

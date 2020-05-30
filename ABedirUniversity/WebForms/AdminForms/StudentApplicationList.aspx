@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="StudentApplicationList.aspx.cs" Inherits="ABedirUniversity.WebForms.Admin.StudentApplicationList" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="StudentApplicationList.aspx.cs" Inherits="ABedirUniversity.WebForms.AdminForms.StudentApplicationList" %>
 
 <!DOCTYPE html>
 
@@ -112,42 +112,6 @@
 
                 td:nth-of-type(3):before {
                     content: "Last Name";
-                }
-
-                td:nth-of-type(4):before {
-                    content: "Username";
-                }
-
-                td:nth-of-type(5):before {
-                    content: "Password";
-                }
-
-                td:nth-of-type(6):before {
-                    content: "Email";
-                }
-
-                td:nth-of-type(7):before {
-                    content: "Phone Number";
-                }
-
-                td:nth-of-type(8):before {
-                    content: "Address 1";
-                }
-
-                td:nth-of-type(9):before {
-                    content: "Address 2";
-                }
-
-                td:nth-of-type(10):before {
-                    content: "City";
-                }
-
-                td:nth-of-type(11):before {
-                    content: "State";
-                }
-
-                td:nth-of-type(12):before {
-                    content: "Zip Code";
                 }
         }
     </style>

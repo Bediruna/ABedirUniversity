@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
-namespace ABedirUniversity.WebForms.Admin
+namespace ABedirUniversity.WebForms.AdminForms
 {
     public partial class ActiveStudentsList : System.Web.UI.Page
     {

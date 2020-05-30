@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
-namespace ABedirUniversity.WebForms.Admin
+namespace ABedirUniversity.WebForms.StudentForms
 {
     public partial class Home : System.Web.UI.Page
     {
@@ -13,7 +8,7 @@ namespace ABedirUniversity.WebForms.Admin
         {
             if (Session["user"] == null)
             {
-                Response.Redirect("/WebForms/AdminLogin.aspx");
+                //Response.Redirect("/WebForms/StudentLogin.aspx");
             }
             else
             {
