@@ -11,7 +11,7 @@ namespace ABedirUniversity.WebForms.AdminForms
 {
 
 
-    public partial class StudentApplicationDetailView
+    public partial class CreateClassPage
     {
 
         /// <summary>
@@ -24,31 +24,31 @@ namespace ABedirUniversity.WebForms.AdminForms
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// hiddenApplicationID control.
+        /// CreateClassFields control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hiddenApplicationID;
+        protected global::System.Web.UI.WebControls.Panel CreateClassFields;
 
         /// <summary>
-        /// ApplicationDetailsLabel control.
+        /// InputClassName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ApplicationDetailsLabel;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText InputClassName;
 
         /// <summary>
-        /// ApplicationGridView control.
+        /// InputClassDescription control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView ApplicationGridView;
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea InputClassDescription;
 
         /// <summary>
         /// ErrorLabel control.
@@ -60,21 +60,30 @@ namespace ABedirUniversity.WebForms.AdminForms
         protected global::System.Web.UI.WebControls.Label ErrorLabel;
 
         /// <summary>
-        /// DeclineButton control.
+        /// CreateClassBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button DeclineButton;
+        protected global::System.Web.UI.WebControls.Button CreateClassBtn;
 
         /// <summary>
-        /// ApproveButton control.
+        /// SuccessPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ApproveButton;
+        protected global::System.Web.UI.WebControls.Panel SuccessPanel;
+
+        /// <summary>
+        /// DisplayClassID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label DisplayClassID;
     }
 }

@@ -29,7 +29,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="AdminLogin.aspx">Admin Portal</a>
+                    <a class="nav-link" href="AdminForms/Home.aspx">Admin Portal</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="StudentLogin.aspx">Student Portal</a>
@@ -48,7 +48,7 @@
                 </div>
                 <div class="form-group col-md-6 col-sm-12">
                     <label for="InputPassword">Password</label>
-                    <input runat="server" type="password" class="form-control" id="InputPassword" placeholder="Password" required="required" />
+                    <input runat="server" type="password" class="form-control" id="InputPassword" placeholder="Password" required="required"  minlength="8" />
                 </div>
             </div>
             <div class="form-row">
@@ -145,7 +145,7 @@
                 </div>
                 <div class="form-group col-md-2 col-sm-12">
                     <label for="InputZip">Zip Code</label>
-                    <input runat="server" type="text" class="form-control" id="InputZip" placeholder="Zip Code" required="required" maxlength="10" />
+                    <input runat="server" type="text" class="form-control" id="InputZip" placeholder="Zip Code" required="required" maxlength="10" minlength="5" />
                 </div>
             </div>
             <asp:Label runat="server" ID="ErrorLabel" CssClass="ErrorMsg" Visible="false" />

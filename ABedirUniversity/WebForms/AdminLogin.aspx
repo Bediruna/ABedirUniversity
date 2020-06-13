@@ -23,7 +23,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="AdminLogin.aspx">Admin Portal</a>
+                        <a class="nav-link" href="AdminForms/Home.aspx">Admin Portal</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="StudentLogin.aspx">Student Portal</a>

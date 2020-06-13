@@ -8,8 +8,9 @@
     <link rel="shortcut icon" href="/Images/capIcon.ico" />
     <title>ABU | Active Students</title>
     <link href="https://fonts.googleapis.com/css?family=Lexend+Deca|Lexend+Zetta&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="/CSS/MainStyle.css" />
     <link rel="stylesheet" type="text/css" href="/CSS/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/CSS/MainStyle.css" />
+    <link rel="stylesheet" type="text/css" href="/CSS/GridStyling.css" />
     <script src="/JavaScript/jquery-3.4.1.min.js"></script>
     <script src="/JavaScript/jquery.mask.js"></script>
     <script src="/JavaScript/bootstrap.min.js"></script>
@@ -29,9 +30,20 @@
                     <li class="nav-item">
                         <a class="nav-link" href="StudentApplicationList.aspx">Student Applications</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="ClassList.aspx">Class List</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="CreateClassPage.aspx">Create New Class</a>
+                    </li>
                 </ul>
             </div>
         </nav>
+        <div class="p-4">
+            <h2>Active Students</h2>
+            <hr />
+            <asp:GridView runat="server" ID="StudentsGridView" OnRowDataBound="StudentsGridView_RowDataBound"></asp:GridView>
+        </div>
     </form>
 </body>
 </html>

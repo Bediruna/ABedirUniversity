@@ -18,12 +18,6 @@ namespace ABedirUniversity.WebForms.AdminForms
                 ApplicationsGridView.DataBind();
             }
         }
-
-        protected void ApplicationsGridView_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string pName = ApplicationsGridView.SelectedRow.Cells[1].Text;
-        }
-
         protected void ApplicationsGridView_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)

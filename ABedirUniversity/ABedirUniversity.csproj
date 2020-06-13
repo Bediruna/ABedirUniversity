@@ -74,12 +74,14 @@
     <Content Include="Images\Loading.gif" />
     <Content Include="Images\Study.jpg" />
     <Content Include="JavaScript\MainScript.js" />
+    <Content Include="WebForms\AdminForms\ClassList.aspx" />
     <Content Include="WebForms\AdminForms\ActiveStudentsList.aspx" />
+    <Content Include="WebForms\AdminForms\CreateClassPage.aspx" />
     <Content Include="WebForms\AdminForms\Home.aspx" />
     <Content Include="WebForms\AdminForms\StudentApplicationList.aspx" />
     <Content Include="CSS\bootstrap.min.css" />
     <Content Include="CSS\MainStyle.css" />
-    <Content Include="CSS\ApplicationGridStyle.css" />
+    <Content Include="CSS\GridStyling.css" />
     <Content Include="default.htm" />
     <Content Include="Images\capIcon.ico" />
     <Content Include="Images\Classes.jpg" />
@@ -114,12 +116,26 @@
     <Compile Include="CSharp\Logger.cs" />
     <Compile Include="CSharp\DataModels\StudentApplication.cs" />
     <Compile Include="CSharp\Validator.cs" />
+    <Compile Include="WebForms\AdminForms\ClassList.aspx.cs">
+      <DependentUpon>ClassList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\AdminForms\ClassList.aspx.designer.cs">
+      <DependentUpon>ClassList.aspx</DependentUpon>
+    </Compile>
     <Compile Include="WebForms\AdminForms\ActiveStudentsList.aspx.cs">
       <DependentUpon>ActiveStudentsList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="WebForms\AdminForms\ActiveStudentsList.aspx.designer.cs">
       <DependentUpon>ActiveStudentsList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\AdminForms\CreateClassPage.aspx.cs">
+      <DependentUpon>CreateClassPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\AdminForms\CreateClassPage.aspx.designer.cs">
+      <DependentUpon>CreateClassPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebForms\AdminForms\Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>

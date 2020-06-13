@@ -13,6 +13,58 @@
     <script src="/JavaScript/jquery-3.4.1.min.js"></script>
     <script src="/JavaScript/jquery.mask.js"></script>
     <script src="/JavaScript/bootstrap.min.js"></script>
+    <style>
+        .box {
+            border-radius: 10px;
+            border: 1px solid black;
+            min-height: 400px;
+        }
+
+        .boxHeader {
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            width: 100%;
+            height: 50px;
+            font-size: 28px;
+            background-color: #4287f5;
+            padding: 5px 15px;
+            color: white;
+        }
+
+        #UsernameLabel {
+            font-size: 2em;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        tr {
+            cursor: pointer;
+        }
+
+            tr:hover {
+                background-color: cornflowerblue !important;
+            }
+            /* Alternating shading */
+            tr:nth-of-type(odd) {
+                background: #eee;
+            }
+
+        th {
+            background: #333;
+            color: white;
+            font-weight: bold;
+        }
+
+        td, th {
+            padding: 6px;
+            border: 1px solid #ccc;
+            text-align: left;
+            word-wrap: break-word;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -29,10 +81,35 @@
                     <li class="nav-item">
                         <a class="nav-link" href="StudentApplicationList.aspx">Student Applications</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="ClassList.aspx">Class List</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="CreateClassPage.aspx">Create New Class</a>
+                    </li>
                 </ul>
             </div>
         </nav>
-        <asp:Label runat="server" ID="UsernameLabel"></asp:Label>
+        <div class="p-4">
+            <div style="text-align: center">
+                <asp:Label runat="server" ID="UsernameLabel"></asp:Label>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md pt-4">
+                        <div class="box">
+                            <div class="boxHeader">New Applications</div>
+                            <asp:GridView runat="server" ID="NewApplicationsGridView" OnRowDataBound="NewApplicationsGridView_RowDataBound"></asp:GridView>
+                        </div>
+                    </div>
+                    <%--<div class="col-md pt-4">
+                        <div class="box">
+                            <div class="boxHeader">Class List</div>
+                        </div>
+                    </div>--%>
+                </div>
+            </div>
+        </div>
     </form>
 </body>
 </html>

@@ -14,15 +14,77 @@ namespace ABedirUniversity.CSharp
         //readonly static string dbConnectionString = "Persist Security Info=False;server=db825511962.hosting-data.io,1433;Initial Catalog=db825511962;User ID=dbo825511962;Password=ABedirDB2020.";
         readonly static string dbConnectionString = ConfigurationManager.ConnectionStrings["DataBaseConnectionString"].ConnectionString;
 
+        public static List<Class> GetClasses()
+        {
+            try
+            {
+                string command = "SELECT * FROM Class";
+                using (IDbConnection cnn = new SqlConnection(dbConnectionString))
+                {
+                    var output = cnn.Query<Class>(command, new DynamicParameters());
+                    return output.ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex.ToString(), "GetClasses");
+                return null;
+            }
+        }
         public static List<StudentApplicationListItem> GetStudentApplications()
         {
             try
             {
-                string command = "SELECT sa.ID, pi.FirstName, pi.LastName, si.UserCreateDate " +
+                string command = "SELECT sa.ID, sa.ApplicationStatus, pi.FirstName, pi.LastName, si.UserCreateDate " +
                     "FROM (((StudentApplication sa " +
                     "JOIN Student st ON sa.StudentID = st.ID) " +
                     "JOIN PersonalInformation pi ON st.PersonalInfoID = pi.ID) " +
-                    "JOIN SecurityInformation si ON st.SecurityInfoID = si.ID)";
+                    "JOIN SecurityInformation si ON st.SecurityInfoID = si.ID) " +
+                    "WHERE sa.ApplicationStatus != 'Active'";
+                using (IDbConnection cnn = new SqlConnection(dbConnectionString))
+                {
+                    var output = cnn.Query<StudentApplicationListItem>(command, new DynamicParameters());
+                    return output.ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex.ToString(), "GetStudentApplications");
+                return null;
+            }
+        }
+        public static List<StudentApplicationListItem> GetActiveStudents()
+        {
+            try
+            {
+                string command = "SELECT sa.ID, sa.ApplicationStatus, pi.FirstName, pi.LastName, si.UserCreateDate " +
+                    "FROM (((StudentApplication sa " +
+                    "JOIN Student st ON sa.StudentID = st.ID) " +
+                    "JOIN PersonalInformation pi ON st.PersonalInfoID = pi.ID) " +
+                    "JOIN SecurityInformation si ON st.SecurityInfoID = si.ID) " +
+                    "WHERE sa.ApplicationStatus = 'Active'";
+                using (IDbConnection cnn = new SqlConnection(dbConnectionString))
+                {
+                    var output = cnn.Query<StudentApplicationListItem>(command, new DynamicParameters());
+                    return output.ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex.ToString(), "GetStudentApplications");
+                return null;
+            }
+        }
+        public static List<StudentApplicationListItem> GetNewStudentApplications()
+        {
+            try
+            {
+                string command = "SELECT sa.ID, sa.ApplicationStatus, pi.FirstName, pi.LastName, si.UserCreateDate " +
+                    "FROM (((StudentApplication sa " +
+                    "JOIN Student st ON sa.StudentID = st.ID) " +
+                    "JOIN PersonalInformation pi ON st.PersonalInfoID = pi.ID) " +
+                    "JOIN SecurityInformation si ON st.SecurityInfoID = si.ID) " +
+                    "WHERE sa.SubmitDateTime >= DATEADD(month,-1,GETDATE()) AND sa.ApplicationStatus != 'Active'";
                 using (IDbConnection cnn = new SqlConnection(dbConnectionString))
                 {
                     var output = cnn.Query<StudentApplicationListItem>(command, new DynamicParameters());
@@ -87,7 +149,7 @@ namespace ABedirUniversity.CSharp
         {
             try
             {
-                string command = "SELECT HashedPassword FROM StudentApplications WHERE Username = '" + userName + "' and ApplicantType = '" + applicantType + "'";
+                string command = "SELECT HashedPassword FROM StudentApplication WHERE Username = '" + userName + "' and ApplicantType = '" + applicantType + "'";
                 using (IDbConnection cnn = new SqlConnection(dbConnectionString))
                 {
                     var output = cnn.ExecuteScalar(command, new DynamicParameters());
@@ -227,13 +289,35 @@ namespace ABedirUniversity.CSharp
             }
             return rowID;
         }
+        public static int InsertClass(Class classToInsert)
+        {
+            int rowID = -1;
+            try
+            {
+                using (IDbConnection cnn = new SqlConnection(dbConnectionString))
+                {
+                    string sql = @"
+                        INSERT INTO Class(Name, Description)
+                        VALUES(@Name, @Description);
+                        SELECT CAST(SCOPE_IDENTITY() as int)";
+
+                    rowID = cnn.Query<int>(sql, classToInsert).Single();
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex.ToString(), "InsertStudent");
+                return rowID;
+            }
+            return rowID;
+        }
         public static bool UpdateApplicationStatus(string applicationId, string newStatus)
         {
             try
             {
                 using (IDbConnection connection = new SqlConnection(dbConnectionString))
                 {
-                    string sqlUpdateCommand = "UPDATE StudentApplications SET ApplicationStatus = '" + newStatus + "' WHERE Id = " + applicationId;
+                    string sqlUpdateCommand = "UPDATE StudentApplication SET ApplicationStatus = '" + newStatus + "' WHERE Id = " + applicationId;
                     connection.Execute(sqlUpdateCommand);
                 }
             }

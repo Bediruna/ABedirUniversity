@@ -47,7 +47,15 @@ namespace ABedirUniversity.WebForms.AdminForms
 
         protected void ApproveButton_Click(object sender, EventArgs e)
         {
-            SQLDataAccess.UpdateApplicationStatus(hiddenApplicationID.Value, "Active");
+            bool successfulUpdate = SQLDataAccess.UpdateApplicationStatus(hiddenApplicationID.Value, "Active");
+            if (successfulUpdate)
+            {
+                Response.Redirect("/WebForms/AdminForms/StudentApplicationList.aspx");
+            }
+            else
+            {
+                ShowErrorMsg("There was an issue processing your request. Please try again later.");
+            }
         }
 
         protected void DeclineButton_Click(object sender, EventArgs e)
@@ -57,11 +65,17 @@ namespace ABedirUniversity.WebForms.AdminForms
 
         protected void ApplicationGridView_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            //int cellsToHide = 3;
-            //for (int i = e.Row.Cells.Count - 1; i > e.Row.Cells.Count - 1 - cellsToHide; i--)
-            //{
-            //    e.Row.Cells[i].Visible = false;
-            //}
+
+        }
+        private void ShowErrorMsg(string errorMsg = "There was an error. Please try again later.")
+        {
+            ErrorLabel.Text = errorMsg;
+            ErrorLabel.Visible = true;
+        }
+        private void HideErrorMsg()
+        {
+            ErrorLabel.Text = "";
+            ErrorLabel.Visible = false;
         }
     }
 }

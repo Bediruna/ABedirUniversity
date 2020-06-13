@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="StudentApplicationList.aspx.cs" Inherits="ABedirUniversity.WebForms.AdminForms.StudentApplicationList" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ClassList.aspx.cs" Inherits="ABedirUniversity.WebForms.AdminForms.ClassList" %>
 
 <!DOCTYPE html>
 
@@ -6,7 +6,7 @@
 <head runat="server">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="shortcut icon" href="/Images/capIcon.ico" />
-    <title>ABU | Applications</title>
+    <title>ABU | Class List</title>
     <link href="https://fonts.googleapis.com/css?family=Lexend+Deca|Lexend+Zetta&display=swap" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="/CSS/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="/CSS/MainStyle.css" />
@@ -23,15 +23,11 @@
                 }
 
                 td:nth-of-type(2):before {
-                    content: "Status";
+                    content: "Name";
                 }
 
                 td:nth-of-type(3):before {
-                    content: "First Name";
-                }
-
-                td:nth-of-type(4):before {
-                    content: "Last Name";
+                    content: "Description";
                 }
         }
     </style>
@@ -61,9 +57,9 @@
             </div>
         </nav>
         <div class="p-4">
-            <h2>Student Applications</h2>
+            <h2>Class List</h2>
             <hr />
-            <asp:GridView runat="server" ID="ApplicationsGridView" OnRowDataBound="ApplicationsGridView_RowDataBound"></asp:GridView>
+            <asp:GridView runat="server" ID="ClassesGridView" OnRowDataBound="ClassesGridView_RowDataBound"></asp:GridView>
         </div>
     </form>
 </body>

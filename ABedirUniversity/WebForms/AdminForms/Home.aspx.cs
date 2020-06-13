@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ABedirUniversity.CSharp;
+using System;
+using System.Web.UI.WebControls;
 
 namespace ABedirUniversity.WebForms.AdminForms
 {
@@ -12,8 +14,20 @@ namespace ABedirUniversity.WebForms.AdminForms
             }
             else
             {
-                //string username = Session["user"].ToString();
-                //UsernameLabel.Text = "Welcome " + username;
+                string username = Session["user"].ToString();
+                UsernameLabel.Text = "Welcome " + username;
+
+                NewApplicationsGridView.DataSource = SQLDataAccess.GetNewStudentApplications();
+                NewApplicationsGridView.DataBind();
+            }
+        }
+
+        protected void NewApplicationsGridView_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                e.Row.Attributes["onclick"] = "location.href = 'StudentApplicationDetailView.aspx?applicationid=" + e.Row.Cells[0].Text + "';";
+                e.Row.ToolTip = "Click to view details";
             }
         }
     }

@@ -13,6 +13,7 @@
     <script src="/JavaScript/jquery-3.4.1.min.js"></script>
     <script src="/JavaScript/jquery.mask.js"></script>
     <script src="/JavaScript/bootstrap.min.js"></script>
+    <script src="/JavaScript/MainScript.js"></script>
     <style>
         /* Force table to not be like tables anymore */
         table, thead, tbody, th, td, tr {
@@ -135,13 +136,21 @@
                     <li class="nav-item">
                         <a class="nav-link" href="StudentApplicationList.aspx">Student Applications</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="ClassList.aspx">Class List</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="CreateClassPage.aspx">Create New Class</a>
+                    </li>
                 </ul>
             </div>
         </nav>
+        <div class="loadingScreen"></div>
         <div class="p-4">
             <asp:Label runat="server" ID="ApplicationDetailsLabel"></asp:Label>
             <hr />
             <asp:GridView runat="server" ID="ApplicationGridView" OnRowDataBound="ApplicationGridView_RowDataBound"></asp:GridView>
+            <asp:Label runat="server" ID="ErrorLabel" CssClass="ErrorMsg" Visible="false" />
             <div class="pt-4">
                 <asp:Button runat="server" ID="DeclineButton" OnClick="DeclineButton_Click" Text="Decline" CssClass="button redFillButton" />
                 <asp:Button runat="server" ID="ApproveButton" OnClick="ApproveButton_Click" Text="Approve" CssClass="button greenFillButton float-lg-right" />
