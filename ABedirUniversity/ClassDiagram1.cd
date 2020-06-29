@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ABedirUniversity.CSharp.DataModels.AddressInformation">
+    <Position X="1.25" Y="0.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAAAAIAAAAAAAAAAAAAAADAAAABAAAAAA=</HashCode>
+      <FileName>CSharp\DataModels\AddressInformation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ABedirUniversity.CSharp.DataModels.Administrator">
+    <Position X="7.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CSharp\DataModels\Administrator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ABedirUniversity.CSharp.DataModels.DataSuperClass">
+    <Position X="4.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAgAAAAAgAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CSharp\DataModels\DataSuperClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ABedirUniversity.CSharp.DataModels.Assignment">
+    <Position X="1.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAgAAAAAAAAAAQAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>CSharp\DataModels\Assignment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ABedirUniversity.CSharp.DataModels.Class">
+    <Position X="3.75" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAggAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CSharp\DataModels\Class.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ABedirUniversity.CSharp.DataModels.Logs">
+    <Position X="3.75" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAABAAAAAAAIAAAAAAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CSharp\DataModels\Logs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ABedirUniversity.CSharp.DataModels.PersonalInformation">
+    <Position X="6.75" Y="4.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAgAAAAg=</HashCode>
+      <FileName>CSharp\DataModels\PersonalInformation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ABedirUniversity.CSharp.DataModels.SecurityInformation">
+    <Position X="8.75" Y="3.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAgCAAAAAQAAAAAgAAAACAAAAAAACAACAAA=</HashCode>
+      <FileName>CSharp\DataModels\SecurityInformation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ABedirUniversity.CSharp.DataModels.Student">
+    <Position X="5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAACAAAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>CSharp\DataModels\Student.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ABedirUniversity.CSharp.DataModels.StudentApplication">
+    <Position X="3" Y="4.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAgAAACAAA=</HashCode>
+      <FileName>CSharp\DataModels\StudentApplication.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ABedirUniversity.CSharp.DataModels.StudentApplicationDetailItem">
+    <Position X="5.5" Y="8.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>ACAAAEAAAAACgAAIAAAAQAAAAAAAAAADAQAgBgAAAAg=</HashCode>
+      <FileName>CSharp\DataModels\StudentApplicationDetailItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ABedirUniversity.CSharp.DataModels.StudentApplicationListItem">
+    <Position X="5.5" Y="6.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAACgAAAAAAAAAAAAAAAAAAAAAAgAAAAAAg=</HashCode>
+      <FileName>CSharp\DataModels\StudentApplicationListItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ABedirUniversity.CSharp.DataModels.Term">
+    <Position X="3.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAQgAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>CSharp\DataModels\Term.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
