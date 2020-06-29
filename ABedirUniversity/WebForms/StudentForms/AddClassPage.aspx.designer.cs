@@ -11,7 +11,7 @@ namespace ABedirUniversity.WebForms.StudentForms
 {
 
 
-    public partial class TermList
+    public partial class AddClassPage
     {
 
         /// <summary>
@@ -24,12 +24,21 @@ namespace ABedirUniversity.WebForms.StudentForms
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// TermsGridView control.
+        /// hiddenTermID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView TermsGridView;
+        protected global::System.Web.UI.WebControls.HiddenField hiddenTermID;
+
+        /// <summary>
+        /// ClassesGridView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView ClassesGridView;
     }
 }

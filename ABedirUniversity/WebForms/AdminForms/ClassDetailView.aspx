@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="ABedirUniversity.WebForms.AdminForms.Home" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ClassDetailView.aspx.cs" Inherits="ABedirUniversity.WebForms.AdminForms.ClassDetailView" %>
 
 <!DOCTYPE html>
 
@@ -6,22 +6,19 @@
 <head runat="server">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="shortcut icon" href="/Images/capIcon.ico" />
-    <title>ABU | Admin Home</title>
+    <title>ABU | Class Details</title>
     <link href="https://fonts.googleapis.com/css?family=Lexend+Deca|Lexend+Zetta&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="/CSS/MainStyle.css" />
     <link rel="stylesheet" type="text/css" href="/CSS/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/CSS/MainStyle.css" />
     <link rel="stylesheet" type="text/css" href="/CSS/GridStyling.css" />
     <script src="/JavaScript/jquery-3.4.1.min.js"></script>
     <script src="/JavaScript/jquery.mask.js"></script>
     <script src="/JavaScript/bootstrap.min.js"></script>
-    <style>
-        #UsernameLabel {
-            font-size: 2em;
-        }
-    </style>
+    <script src="/JavaScript/MainScript.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">
+        <asp:HiddenField runat="server" ID="hiddenClassID" />
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="/default.htm">ABU</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,24 +41,14 @@
                 </ul>
             </div>
         </nav>
+        <div class="loadingScreen"></div>
         <div class="p-4">
-            <div style="text-align: center">
-                <asp:Label runat="server" ID="UsernameLabel"></asp:Label>
-            </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md pt-4">
-                        <div class="box">
-                            <div class="boxHeader">New Applications</div>
-                            <asp:GridView runat="server" ID="NewApplicationsGridView" OnRowDataBound="NewApplicationsGridView_RowDataBound"></asp:GridView>
-                        </div>
-                    </div>
-                    <%--<div class="col-md pt-4">
-                        <div class="box">
-                            <div class="boxHeader">Class List</div>
-                        </div>
-                    </div>--%>
-                </div>
+            <asp:Label runat="server" ID="ClassDetailsLabel"></asp:Label>
+            <hr />
+            <asp:GridView runat="server" ID="ClassGridView"></asp:GridView>
+            <asp:Label runat="server" ID="ErrorLabel" CssClass="ErrorMsg" Visible="false" />
+            <div class="pt-4">
+                <asp:Button runat="server" ID="DeleteButton" OnClick="DeleteButton_Click" Text="Delete" CssClass="button redFillButton" />
             </div>
         </div>
     </form>

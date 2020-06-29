@@ -47,7 +47,7 @@ namespace ABedirUniversity.WebForms.AdminForms
 
         protected void ApproveButton_Click(object sender, EventArgs e)
         {
-            bool successfulUpdate = SQLDataAccess.UpdateApplicationStatus(hiddenApplicationID.Value, "Active");
+            bool successfulUpdate = SQLDataAccess.UpdateApplicationStatus(hiddenApplicationID.Value, "active");
             if (successfulUpdate)
             {
                 Response.Redirect("/WebForms/AdminForms/StudentApplicationList.aspx");
@@ -60,12 +60,7 @@ namespace ABedirUniversity.WebForms.AdminForms
 
         protected void DeclineButton_Click(object sender, EventArgs e)
         {
-            SQLDataAccess.UpdateApplicationStatus(hiddenApplicationID.Value, "Declined");
-        }
-
-        protected void ApplicationGridView_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
-
+            SQLDataAccess.UpdateApplicationStatus(hiddenApplicationID.Value, "declined");
         }
         private void ShowErrorMsg(string errorMsg = "There was an error. Please try again later.")
         {

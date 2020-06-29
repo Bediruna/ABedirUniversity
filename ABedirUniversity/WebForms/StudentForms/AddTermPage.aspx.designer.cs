@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ABedirUniversity.WebForms.AdminForms
+namespace ABedirUniversity.WebForms.StudentForms
 {
 
 
-    public partial class StudentApplicationList
+    public partial class AddTermPage
     {
 
         /// <summary>
@@ -24,39 +24,57 @@ namespace ABedirUniversity.WebForms.AdminForms
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// ExportBtn control.
+        /// CreateTermFields control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ExportBtn;
+        protected global::System.Web.UI.WebControls.Panel CreateTermFields;
 
         /// <summary>
-        /// InputSearch control.
+        /// InputTermName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText InputSearch;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText InputTermName;
 
         /// <summary>
-        /// SearchBtn control.
+        /// InputStartDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button SearchBtn;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl InputStartDate;
 
         /// <summary>
-        /// ApplicationsGridView control.
+        /// InputEndDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView ApplicationsGridView;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl InputEndDate;
+
+        /// <summary>
+        /// ErrorLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ErrorLabel;
+
+        /// <summary>
+        /// AddTermBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button AddTermBtn;
     }
 }

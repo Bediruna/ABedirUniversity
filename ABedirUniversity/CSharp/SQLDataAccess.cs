@@ -11,7 +11,6 @@ namespace ABedirUniversity.CSharp
 {
     public class SQLDataAccess
     {
-        //readonly static string dbConnectionString = "Persist Security Info=False;server=db825511962.hosting-data.io,1433;Initial Catalog=db825511962;User ID=dbo825511962;Password=ABedirDB2020.";
         readonly static string dbConnectionString = ConfigurationManager.ConnectionStrings["DataBaseConnectionString"].ConnectionString;
 
         public static List<Class> GetClasses()
@@ -75,6 +74,29 @@ namespace ABedirUniversity.CSharp
                 return null;
             }
         }
+        public static List<StudentApplicationListItem> SearchApplicationsByName(string query)
+        {
+            try
+            {
+                string command = "SELECT sa.ID, sa.ApplicationStatus, pi.FirstName, pi.LastName, si.UserCreateDate " +
+                    "FROM (((StudentApplication sa " +
+                    "JOIN Student st ON sa.StudentID = st.ID) " +
+                    "JOIN PersonalInformation pi ON st.PersonalInfoID = pi.ID) " +
+                    "JOIN SecurityInformation si ON st.SecurityInfoID = si.ID) " +
+                    "WHERE pi.FirstName LIKE '%"+ query + "%' OR pi.LastName LIKE '%" + query + "%'";
+                using (IDbConnection cnn = new SqlConnection(dbConnectionString))
+                {
+                    var output = cnn.Query<StudentApplicationListItem>(command, new DynamicParameters());
+                    return output.ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex.ToString(), "GetStudentApplications");
+                return null;
+            }
+        }
+
         public static List<StudentApplicationListItem> GetNewStudentApplications()
         {
             try
@@ -117,6 +139,119 @@ namespace ABedirUniversity.CSharp
             catch (Exception ex)
             {
                 Logger.LogError(ex.ToString(), "GetApplicationDetails");
+                return null;
+            }
+        }
+        public static List<Class> GetTermClasses(int termId)
+        {
+            try
+            {
+                string command = "SELECT Class.ID, Class.Name, Class.Description FROM Class " +
+                    "JOIN TermClasses tc ON tc.ClassID = Class.ID WHERE tc.TermID = " + termId;
+
+                using (IDbConnection cnn = new SqlConnection(dbConnectionString))
+                {
+                    var output = cnn.Query<Class>(command);
+
+                    return output.ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex.ToString(), "GetStudentTerms");
+                return null;
+            }
+        }
+        public static List<Class> GetClassAssignments(int classId)
+        {
+            try
+            {
+                string command = "SELECT Assignment.ID, Assignment.Name, Assignment.Type, Assignment.Description FROM Assignment " +
+                    "JOIN ClassAssignments ca ON ca.AssignmentID = Assignment.ID WHERE ca.ClassID = " + classId;
+
+                using (IDbConnection cnn = new SqlConnection(dbConnectionString))
+                {
+                    var output = cnn.Query<Class>(command);
+
+                    return output.ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex.ToString(), "GetClassAssignments");
+                return null;
+            }
+        }
+        public static List<Term> GetStudentTerms(int studentId)
+        {
+            try
+            {
+                string command = "SELECT Term.ID, Term.Name, Term.StartDate, Term.EndDate FROM Term " +
+                    "JOIN StudentTerms st ON st.TermID = Term.ID WHERE st.StudentID = " + studentId;
+                using (IDbConnection cnn = new SqlConnection(dbConnectionString))
+                {
+                    var output = cnn.Query<Term>(command);
+
+                    return output.ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex.ToString(), "GetStudentTerms");
+                return null;
+            }
+        }
+        public static List<Term> GetTermDetails(int termId)
+        {
+            try
+            {
+                string command = "SELECT * FROM Term WHERE ID = " + termId;
+                using (IDbConnection cnn = new SqlConnection(dbConnectionString))
+                {
+                    var output = cnn.Query<Term>(command);
+
+                    return output.ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex.ToString(), "GetApplicationDetails");
+                return null;
+            }
+        }
+        public static List<Class> GetClassDetails(int classId)
+        {
+            try
+            {
+                string command = "SELECT * FROM Class WHERE ID = @classId";
+                using (IDbConnection cnn = new SqlConnection(dbConnectionString))
+                {
+                    var output = cnn.Query<Class>(command, new { classId });
+
+                    return output.ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex.ToString(), "GetClassDetails");
+                return null;
+            }
+        }
+        public static List<Class> GetAssignmentDetails(int assignmentId)
+        {
+            try
+            {
+                string command = "SELECT * FROM Assignment WHERE ID = @assignmentId";
+                using (IDbConnection cnn = new SqlConnection(dbConnectionString))
+                {
+                    var output = cnn.Query<Class>(command, new { assignmentId });
+
+                    return output.ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex.ToString(), "GetAssignmentDetails");
                 return null;
             }
         }
@@ -179,6 +314,81 @@ namespace ABedirUniversity.CSharp
             }
             return false;
         }
+        public static int GetStudentIDFromUsername(string userName)
+        {
+            int studentId = -1;
+            try
+            {
+                string command = "SELECT Student.ID FROM Student " +
+                    "JOIN SecurityInformation si ON " +
+                    "Student.SecurityInfoID = si.ID and " +
+                    "si.Username = '" + userName + "' and " +
+                    "UserType = 'student'";
+                using (IDbConnection cnn = new SqlConnection(dbConnectionString))
+                {
+                    studentId = cnn.Query<int>(command).FirstOrDefault();
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex.ToString(), "GetStudentIDFromUsername");
+            }
+            return studentId;
+        }
+        public static void InsertStudentTerm(int studentId, int termId)
+        {
+            try
+            {
+                using (IDbConnection cnn = new SqlConnection(dbConnectionString))
+                {
+                    string command = @"
+                        INSERT INTO StudentTerms(StudentID, TermID)
+                        VALUES("+ studentId + ", "+ termId + ")";
+
+                    cnn.Execute(command);
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex.ToString(), "InsertStudentTerm");
+            }
+        }
+        public static void AddClassToTerm(int termId, int classId)
+        {
+            try
+            {
+                using (IDbConnection cnn = new SqlConnection(dbConnectionString))
+                {
+                    string command = @"
+                        INSERT INTO TermClasses(TermID, ClassID)
+                        VALUES(" + termId + ", " + classId + ")";
+
+                    cnn.Execute(command);
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex.ToString(), "AddClassToTerm");
+            }
+        }
+        public static void AddAssignmentToClass(int classId, int assignmentId)
+        {
+            try
+            {
+                using (IDbConnection cnn = new SqlConnection(dbConnectionString))
+                {
+                    string command = @"
+                        INSERT INTO ClassAssignments(ClassID, AssignmentID)
+                        VALUES(" + classId + ", " + assignmentId + ")";
+
+                    cnn.Execute(command);
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex.ToString(), "AddAssignmentToClass");
+            }
+        }
         public static int InsertStudentApplication(StudentApplication application)
         {
             int rowID = -1;
@@ -188,7 +398,7 @@ namespace ABedirUniversity.CSharp
                 {
                     string sql = @"
                         INSERT INTO StudentApplication(StudentID, ApplicationStatus, SubmitDateTime)
-                        VALUES(@StudentID, @Status, @SubmitDateTime);
+                        VALUES(@StudentID, @ApplicationStatus, @SubmitDateTime);
                         SELECT CAST(SCOPE_IDENTITY() as int)";
 
                     rowID = cnn.Query<int>(sql, application).Single();
@@ -310,6 +520,120 @@ namespace ABedirUniversity.CSharp
                 return rowID;
             }
             return rowID;
+        }
+        public static int InsertAssignment(Assignment assignmentToInsert)
+        {
+            int rowID = -1;
+            try
+            {
+                using (IDbConnection cnn = new SqlConnection(dbConnectionString))
+                {
+                    string sql = @"
+                        INSERT INTO Assignment(Name, Type, Description)
+                        VALUES(@Name, @Type, @Description);
+                        SELECT CAST(SCOPE_IDENTITY() as int)";
+
+                    rowID = cnn.Query<int>(sql, assignmentToInsert).Single();
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex.ToString(), "InsertAssignment");
+                return rowID;
+            }
+            return rowID;
+        }
+        public static int InsertTerm(Term termToInsert)
+        {
+            int rowID = -1;
+            try
+            {
+                using (IDbConnection cnn = new SqlConnection(dbConnectionString))
+                {
+                    string sql = @"
+                        INSERT INTO Term(Name, StartDate, EndDate)
+                        VALUES(@Name, @StartDate, @EndDate);
+                        SELECT CAST(SCOPE_IDENTITY() as int)";
+
+                    rowID = cnn.Query<int>(sql, termToInsert).Single();
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex.ToString(), "InsertTerm");
+                return rowID;
+            }
+            return rowID;
+        }
+        public static bool DeleteTerm(string termId)
+        {
+            try
+            {
+                using (IDbConnection connection = new SqlConnection(dbConnectionString))
+                {
+                    string sqlDeleteCommand = "DELETE FROM Term WHERE ID = " + termId + "; " +
+                        "DELETE FROM StudentTerms WHERE TermID = " + termId + "; ";
+                    connection.Execute(sqlDeleteCommand);
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex.ToString(), "DeleteTerm");
+                return false;
+            }
+            return true;
+        }
+        public static bool RemoveClassFromTerm(string classId)
+        {
+            try
+            {
+                using (IDbConnection connection = new SqlConnection(dbConnectionString))
+                {
+                    string sqlDeleteCommand = "DELETE FROM TermClasses WHERE classId = " + classId;
+                    connection.Execute(sqlDeleteCommand);
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex.ToString(), "RemoveClassFromTerm");
+                return false;
+            }
+            return true;
+        }
+        public static bool DeleteAssignment(string assignmentId)
+        {
+            try
+            {
+                using (IDbConnection connection = new SqlConnection(dbConnectionString))
+                {
+                    string sqlDeleteCommand = "DELETE FROM Assignment WHERE ID = " + assignmentId + "; " +
+                        "DELETE FROM ClassAssignments WHERE AssignmentID = " + assignmentId + ";";
+                    connection.Execute(sqlDeleteCommand);
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex.ToString(), "DeleteAssignment");
+                return false;
+            }
+            return true;
+        }
+        public static bool DeleteClass(string classId)
+        {
+            try
+            {
+                using (IDbConnection connection = new SqlConnection(dbConnectionString))
+                {
+                    string sqlDeleteCommand = "DELETE FROM Class WHERE Id = " + classId;
+                    connection.Execute(sqlDeleteCommand);
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex.ToString(), "DeleteClass");
+                return false;
+            }
+            return true;
         }
         public static bool UpdateApplicationStatus(string applicationId, string newStatus)
         {

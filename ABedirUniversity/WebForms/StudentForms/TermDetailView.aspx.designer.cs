@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ABedirUniversity.WebForms.AdminForms
+namespace ABedirUniversity.WebForms.StudentForms
 {
 
 
-    public partial class StudentApplicationList
+    public partial class TermDetailView
     {
 
         /// <summary>
@@ -24,39 +24,57 @@ namespace ABedirUniversity.WebForms.AdminForms
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// ExportBtn control.
+        /// hiddenTermID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ExportBtn;
+        protected global::System.Web.UI.WebControls.HiddenField hiddenTermID;
 
         /// <summary>
-        /// InputSearch control.
+        /// TermDetailsLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText InputSearch;
+        protected global::System.Web.UI.WebControls.Label TermDetailsLabel;
 
         /// <summary>
-        /// SearchBtn control.
+        /// TermDetailGridView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button SearchBtn;
+        protected global::System.Web.UI.WebControls.GridView TermDetailGridView;
 
         /// <summary>
-        /// ApplicationsGridView control.
+        /// ClassesGridView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView ApplicationsGridView;
+        protected global::System.Web.UI.WebControls.GridView ClassesGridView;
+
+        /// <summary>
+        /// DeleteButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button DeleteButton;
+
+        /// <summary>
+        /// AddClassButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button AddClassButton;
     }
 }

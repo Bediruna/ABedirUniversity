@@ -15,15 +15,16 @@ namespace ABedirUniversity.WebForms
             string validationResult = PasswordManager.ValidateUser(usernameInput.Value, passwordInput.Value, "student");
             switch (validationResult)
             {
-                case "Active":
+                case "active":
                     HideErrorMsg();
-                    Session["user"] = usernameInput.Value;
+                    Session["username"] = usernameInput.Value;
+                    Session["studentid"] = SQLDataAccess.GetStudentIDFromUsername(usernameInput.Value);
                     Response.Redirect("StudentForms/Home.aspx");
                     break;
-                case "Pending":
+                case "pending":
                     ShowErrorMsg("Your application is still pending. Please try again later.");
                     break;
-                case "Declined":
+                case "declined":
                     ShowErrorMsg("Your application was declined. Please contact support.");
                     break;
                 default:

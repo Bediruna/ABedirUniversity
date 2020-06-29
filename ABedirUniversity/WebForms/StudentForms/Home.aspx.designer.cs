@@ -31,5 +31,23 @@ namespace ABedirUniversity.WebForms.StudentForms
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label UsernameLabel;
+
+        /// <summary>
+        /// CurrentClassesGridView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView CurrentClassesGridView;
+
+        /// <summary>
+        /// UpcomingAssignmentsGridView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView UpcomingAssignmentsGridView;
     }
 }

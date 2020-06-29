@@ -149,7 +149,7 @@
         <div class="p-4">
             <asp:Label runat="server" ID="ApplicationDetailsLabel"></asp:Label>
             <hr />
-            <asp:GridView runat="server" ID="ApplicationGridView" OnRowDataBound="ApplicationGridView_RowDataBound"></asp:GridView>
+            <asp:GridView runat="server" ID="ApplicationGridView"></asp:GridView>
             <asp:Label runat="server" ID="ErrorLabel" CssClass="ErrorMsg" Visible="false" />
             <div class="pt-4">
                 <asp:Button runat="server" ID="DeclineButton" OnClick="DeclineButton_Click" Text="Decline" CssClass="button redFillButton" />

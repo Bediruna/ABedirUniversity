@@ -10,8 +10,14 @@
     <link href="https://fonts.googleapis.com/css?family=Lexend+Deca|Lexend+Zetta&display=swap" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="/CSS/MainStyle.css" />
     <link rel="stylesheet" type="text/css" href="/CSS/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/CSS/GridStyling.css" />
     <script src="/JavaScript/jquery-3.4.1.min.js"></script>
     <script src="/JavaScript/bootstrap.min.js"></script>
+    <style>
+        #UsernameLabel {
+            font-size: 2em;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -23,25 +29,31 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="ClassList.aspx">Classes</a>
+                        <a class="nav-link" href="TermList.aspx">Terms</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="TermList.aspx">Terms</a>
+                        <a class="nav-link" href="AddTermPage.aspx">Add Term</a>
                     </li>
                 </ul>
             </div>
         </nav>
-        <div class="p-5">
-            <asp:Label runat="server" ID="UsernameLabel" />
-            <span>Welcome Bedir!</span>
+        <div class="p-4">
+            <div style="text-align: center">
+                <asp:Label runat="server" ID="UsernameLabel"></asp:Label>
+            </div>
             <div class="container">
                 <div class="row">
-                    <div class="col-6" style="background-color:red;">
-                        One of three columns
+                    <div class="col-md pt-4">
+                        <div class="box">
+                            <div class="boxHeader">Current Classes</div>
+                            <asp:GridView runat="server" ID="CurrentClassesGridView" OnRowDataBound="CurrentClassesGridView_RowDataBound"></asp:GridView>
+                        </div>
                     </div>
-                    <div class="col-6" style="background-color:green;">
-                        One of three columns
-
+                    <div class="col-md pt-4">
+                        <div class="box">
+                            <div class="boxHeader">Upcoming Assignments</div>
+                            <asp:GridView runat="server" ID="UpcomingAssignmentsGridView" OnRowDataBound="UpcomingAssignmentsGridView_RowDataBound"></asp:GridView>
+                        </div>
                     </div>
                 </div>
             </div>

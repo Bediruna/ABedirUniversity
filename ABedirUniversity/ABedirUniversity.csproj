@@ -74,6 +74,7 @@
     <Content Include="Images\Loading.gif" />
     <Content Include="Images\Study.jpg" />
     <Content Include="JavaScript\MainScript.js" />
+    <Content Include="WebForms\AdminForms\ClassDetailView.aspx" />
     <Content Include="WebForms\AdminForms\ClassList.aspx" />
     <Content Include="WebForms\AdminForms\ActiveStudentsList.aspx" />
     <Content Include="WebForms\AdminForms\CreateClassPage.aspx" />
@@ -93,8 +94,14 @@
     <Content Include="WebForms\StudentApplicationForm.aspx" />
     <Content Include="WebForms\AdminForms\StudentApplicationDetailView.aspx" />
     <Content Include="WebForms\AdminLogin.aspx" />
-    <Content Include="WebForms\StudentForms\ClassList.aspx" />
+    <Content Include="WebForms\StudentForms\AddAssignmentPage.aspx" />
+    <Content Include="WebForms\StudentForms\AddClassPage.aspx" />
+    <Content Include="WebForms\StudentForms\AddTermPage.aspx" />
+    <Content Include="WebForms\StudentForms\AssignmentDetailView.aspx" />
+    <Content Include="WebForms\StudentForms\ClassAddSuccess.aspx" />
+    <Content Include="WebForms\StudentForms\ClassDetailView.aspx" />
     <Content Include="WebForms\StudentForms\Home.aspx" />
+    <Content Include="WebForms\StudentForms\TermDetailView.aspx" />
     <Content Include="WebForms\StudentLogin.aspx" />
     <Content Include="Web.config" />
     <Content Include="WebForms\StudentForms\TermList.aspx" />
@@ -116,6 +123,13 @@
     <Compile Include="CSharp\Logger.cs" />
     <Compile Include="CSharp\DataModels\StudentApplication.cs" />
     <Compile Include="CSharp\Validator.cs" />
+    <Compile Include="WebForms\AdminForms\ClassDetailView.aspx.cs">
+      <DependentUpon>ClassDetailView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\AdminForms\ClassDetailView.aspx.designer.cs">
+      <DependentUpon>ClassDetailView.aspx</DependentUpon>
+    </Compile>
     <Compile Include="WebForms\AdminForms\ClassList.aspx.cs">
       <DependentUpon>ClassList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -175,12 +189,47 @@
     <Compile Include="WebForms\AdminLogin.aspx.designer.cs">
       <DependentUpon>AdminLogin.aspx</DependentUpon>
     </Compile>
-    <Compile Include="WebForms\StudentForms\ClassList.aspx.cs">
-      <DependentUpon>ClassList.aspx</DependentUpon>
+    <Compile Include="WebForms\StudentForms\AddAssignmentPage.aspx.cs">
+      <DependentUpon>AddAssignmentPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="WebForms\StudentForms\ClassList.aspx.designer.cs">
-      <DependentUpon>ClassList.aspx</DependentUpon>
+    <Compile Include="WebForms\StudentForms\AddAssignmentPage.aspx.designer.cs">
+      <DependentUpon>AddAssignmentPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\StudentForms\AddClassPage.aspx.cs">
+      <DependentUpon>AddClassPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\StudentForms\AddClassPage.aspx.designer.cs">
+      <DependentUpon>AddClassPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\StudentForms\AddTermPage.aspx.cs">
+      <DependentUpon>AddTermPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\StudentForms\AddTermPage.aspx.designer.cs">
+      <DependentUpon>AddTermPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\StudentForms\AssignmentDetailView.aspx.cs">
+      <DependentUpon>AssignmentDetailView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\StudentForms\AssignmentDetailView.aspx.designer.cs">
+      <DependentUpon>AssignmentDetailView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\StudentForms\ClassAddSuccess.aspx.cs">
+      <DependentUpon>ClassAddSuccess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\StudentForms\ClassAddSuccess.aspx.designer.cs">
+      <DependentUpon>ClassAddSuccess.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\StudentForms\ClassDetailView.aspx.cs">
+      <DependentUpon>ClassDetailView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\StudentForms\ClassDetailView.aspx.designer.cs">
+      <DependentUpon>ClassDetailView.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebForms\StudentForms\Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
@@ -188,6 +237,13 @@
     </Compile>
     <Compile Include="WebForms\StudentForms\Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\StudentForms\TermDetailView.aspx.cs">
+      <DependentUpon>TermDetailView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\StudentForms\TermDetailView.aspx.designer.cs">
+      <DependentUpon>TermDetailView.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebForms\StudentLogin.aspx.cs">
       <DependentUpon>StudentLogin.aspx</DependentUpon>

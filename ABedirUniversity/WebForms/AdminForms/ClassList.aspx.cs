@@ -1,9 +1,5 @@
 ﻿using ABedirUniversity.CSharp;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace ABedirUniversity.WebForms.AdminForms
@@ -25,7 +21,11 @@ namespace ABedirUniversity.WebForms.AdminForms
 
         protected void ClassesGridView_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                e.Row.Attributes["onclick"] = "location.href = 'ClassDetailView.aspx?classid=" + e.Row.Cells[0].Text + "';";
+                e.Row.ToolTip = "Click to view details";
+            }
         }
     }
 }

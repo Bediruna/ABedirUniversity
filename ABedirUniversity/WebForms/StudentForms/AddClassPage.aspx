@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="TermList.aspx.cs" Inherits="ABedirUniversity.WebForms.StudentForms.TermList" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AddClassPage.aspx.cs" Inherits="ABedirUniversity.WebForms.StudentForms.AddClassPage" %>
 
 <!DOCTYPE html>
 
@@ -6,13 +6,15 @@
 <head runat="server">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="shortcut icon" href="/Images/capIcon.ico" />
-    <title>ABU | Term List</title>
+    <title>ABU | Add Class</title>
     <link href="https://fonts.googleapis.com/css?family=Lexend+Deca|Lexend+Zetta&display=swap" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="/CSS/MainStyle.css" />
     <link rel="stylesheet" type="text/css" href="/CSS/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="/CSS/GridStyling.css" />
     <script src="/JavaScript/jquery-3.4.1.min.js"></script>
+    <script src="/JavaScript/jquery.mask.js"></script>
     <script src="/JavaScript/bootstrap.min.js"></script>
+    <script src="/JavaScript/MainScript.js"></script>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -32,10 +34,12 @@
         </div>
     </nav>
     <form id="form1" runat="server">
-        <div class="p-4">
-            <h2>Terms</h2>
+        <asp:HiddenField runat="server" ID="hiddenTermID" />
+        <div class="loadingScreen"></div>
+        <div class="p-4">            
+            <h2>Select class to add to term</h2>
             <hr />
-            <asp:GridView runat="server" ID="TermsGridView" OnRowDataBound="TermsGridView_RowDataBound"></asp:GridView>
+            <asp:GridView runat="server" ID="ClassesGridView" OnRowDataBound="ClassesGridView_RowDataBound"></asp:GridView>
         </div>
     </form>
 </body>
