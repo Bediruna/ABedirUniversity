@@ -15,12 +15,6 @@ namespace ABedirUniversity.WebForms.StudentForms
             {
                 string username = Session["username"].ToString();
                 UsernameLabel.Text = "Welcome " + username;
-
-                //CurrentClassesGridView.DataSource = SQLDataAccess.GetStudentClasses(username);
-                //CurrentClassesGridView.DataBind();
-
-                UpcomingAssignmentsGridView.DataSource = SQLDataAccess.GetNewStudentApplications();
-                UpcomingAssignmentsGridView.DataBind();
             }
         }
 

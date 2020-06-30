@@ -41,22 +41,6 @@
             <div style="text-align: center">
                 <asp:Label runat="server" ID="UsernameLabel"></asp:Label>
             </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md pt-4">
-                        <div class="box">
-                            <div class="boxHeader">Current Classes</div>
-                            <asp:GridView runat="server" ID="CurrentClassesGridView" OnRowDataBound="CurrentClassesGridView_RowDataBound"></asp:GridView>
-                        </div>
-                    </div>
-                    <div class="col-md pt-4">
-                        <div class="box">
-                            <div class="boxHeader">Upcoming Assignments</div>
-                            <asp:GridView runat="server" ID="UpcomingAssignmentsGridView" OnRowDataBound="UpcomingAssignmentsGridView_RowDataBound"></asp:GridView>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </form>
 </body>
