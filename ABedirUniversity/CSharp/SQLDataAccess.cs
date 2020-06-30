@@ -260,10 +260,10 @@ namespace ABedirUniversity.CSharp
             SecurityInformation securityInformation = new SecurityInformation();
             try
             {
-                string command = "SELECT UserStatus, HashedPassword, PasswordSalt FROM SecurityInformation WHERE Username = @Username and UserType = @UserType";
+                string command = "SELECT UserStatus, HashedPassword, PasswordSalt FROM SecurityInformation WHERE Username = '"+ userName + "' and UserType = '" + userType + "'";
                 using (IDbConnection cnn = new SqlConnection(dbConnectionString))
                 {
-                    var reader = cnn.ExecuteReader(command, new { Username = userName, UserType = userType });
+                    var reader = cnn.ExecuteReader(command);
 
                     while (reader.Read())
                     {
@@ -641,7 +641,9 @@ namespace ABedirUniversity.CSharp
             {
                 using (IDbConnection connection = new SqlConnection(dbConnectionString))
                 {
-                    string sqlUpdateCommand = "UPDATE StudentApplication SET ApplicationStatus = '" + newStatus + "' WHERE Id = " + applicationId;
+                    string sqlUpdateCommand = "UPDATE StudentApplication SET ApplicationStatus = '" + newStatus + "' WHERE ID = " + applicationId +"; " +
+                        "UPDATE SecurityInformation set UserStatus  = '" + newStatus + "' WHERE ID = (SELECT si.ID FROM((StudentApplication sa JOIN Student st ON sa.StudentID = st.ID) " +
+                        "JOIN SecurityInformation si ON st.SecurityInfoID = si.ID) WHERE sa.ID = " + applicationId + ")";
                     connection.Execute(sqlUpdateCommand);
                 }
             }
